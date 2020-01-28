@@ -1,4 +1,21 @@
 <resources>
     <string name="app_name">DiscoveryWeather</string>
     <string name="btn_post_text">Provide a Weather Recording</string>
+    
+    <string name="label_temp">Temperature</string>
+    <string name="label_temp_units">\u2103</string>
+    <string name="label_pressure">Pressure</string>
+    <string name="label_pressure_unit">hPa</string>
+    <string name="label_speed">Wind Speed</string>
+    <string name="label_speed_unit">m/s</string>
+    <string name="label_direction">Wind Direction</string>
+    <string name="label_rain">Rainfall</string>
+    <string name="label_snow">Snowfall</string>
+    <string name="label_precipitation_unit">mm</string>
+    <string name="label_conditions">Overall Conditions</string>
+    <string name="display_error">ERROR</string>
+
+    <string name="radio_sunny">Sunny</string>
+    <string name="radio_overcast">Cloudy</string>
+    <string name="radio_rainy">Raining</string>
 </resources>
