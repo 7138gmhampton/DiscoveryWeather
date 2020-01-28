@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">DiscoveryWeather</string>
+    <string name="btn_post_text">Provide a Weather Recording</string>
 </resources>
