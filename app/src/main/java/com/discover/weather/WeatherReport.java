@@ -1,12 +1,11 @@
 package com.discover.weather;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
-import android.widget.EditText;
 import android.widget.SeekBar;
-import android.widget.TextView;
 import android.widget.SeekBar.OnSeekBarChangeListener;
+import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeListener
 {
