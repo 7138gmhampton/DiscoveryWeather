@@ -43,9 +43,9 @@ public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeL
     private void updateWindDirectionDisplay()
     {
         SeekBar directionSetter = findViewById(R.id.seekWind);
-        int currentDirection = directionSetter.getProgress();
         TextView directionDisplay = findViewById(R.id.textDirectionDisplay);
 
-        directionDisplay.setText(Integer.toString(currentDirection) + "\u00B0");
+        directionDisplay.setText(getString(R.string.display_wind_direction,
+                directionSetter.getProgress()));
     }
 }
