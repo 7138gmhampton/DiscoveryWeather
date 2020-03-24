@@ -16,8 +16,7 @@ public class Home extends AppCompatActivity implements OnClickListener
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        Button btnPost = findViewById(R.id.buttonPost);
-        btnPost.setOnClickListener(this);
+        findViewById(R.id.buttonPost).setOnClickListener(this);
     }
 
     @Override
