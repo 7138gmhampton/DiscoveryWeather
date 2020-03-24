@@ -16,7 +16,6 @@ public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeL
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_weather_report);
 
-        //updateWindDirectionDisplay();
         SeekBar windSeekBar = findViewById(R.id.seekWind);
         windSeekBar.setOnSeekBarChangeListener(this);
     }
