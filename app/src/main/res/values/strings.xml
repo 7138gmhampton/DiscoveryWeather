@@ -14,7 +14,7 @@
     <string name="label_precipitation_unit">mm</string>
     <string name="label_conditions">Overall Conditions</string>
     <string name="display_error">ERROR</string>
-    <string name="display_wind_direction">%1\u00B0</string>
+    <string name="display_wind_direction">%d\u00B0</string>
 
     <string name="radio_sunny">Sunny</string>
     <string name="radio_overcast">Cloudy</string>
