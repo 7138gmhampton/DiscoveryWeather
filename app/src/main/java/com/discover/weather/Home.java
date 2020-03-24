@@ -23,11 +23,7 @@ public class Home extends AppCompatActivity implements OnClickListener
     @Override
     public void onClick(View view)
     {
-        if (view.getId() == R.id.buttonPost) {
-            Intent changeActivity = new Intent(
-                    getApplicationContext(),
-                    WeatherReport.class);
-            startActivity(changeActivity);
-        }
+        if (view.getId() == R.id.buttonPost)
+            startActivity(new Intent(getApplicationContext(), WeatherReport.class));
     }
 }
