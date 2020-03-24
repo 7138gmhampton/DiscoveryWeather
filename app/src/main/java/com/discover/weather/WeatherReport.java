@@ -6,8 +6,9 @@ import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.SeekBar.OnSeekBarChangeListener;
 
-public class WeatherReport extends AppCompatActivity
+public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeListener
 {
 
     @Override
@@ -17,6 +18,8 @@ public class WeatherReport extends AppCompatActivity
         setContentView(R.layout.activity_weather_report);
 
         //updateWindDirectionDisplay();
+        SeekBar windSeekBar = findViewById(R.id.seekWind);
+        windSeekBar.setOnSeekBarChangeListener(this);
     }
 
     @Override
@@ -26,6 +29,18 @@ public class WeatherReport extends AppCompatActivity
 
         updateWindDirectionDisplay();
     }
+
+    @Override
+    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser)
+    {
+        if (seekBar.getId() == R.id.seekWind) updateWindDirectionDisplay();
+    }
+
+    @Override
+    public void onStartTrackingTouch(SeekBar seekBar) {}
+
+    @Override
+    public void onStopTrackingTouch(SeekBar seekBar) {}
 
     private void updateWindDirectionDisplay()
     {
