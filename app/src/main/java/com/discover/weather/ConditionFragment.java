@@ -39,6 +39,9 @@ public class ConditionFragment extends DialogFragment {
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
      */
+
+    ConditionFragmentListener listener;
+
     public ConditionFragment() {
     }
 
@@ -78,6 +81,20 @@ public class ConditionFragment extends DialogFragment {
                 });
 
         return builder.create();
+    }
+
+    @Override
+    public void onAttach(Context context)
+    {
+        super.onAttach(context);
+
+        try {
+            listener = (ConditionFragmentListener)context;
+        }
+        catch (ClassCastException err) {
+            throw new ClassCastException(getActivity().toString() +
+                    " must implement ConditionFragmentListener");
+        }
     }
 
 //    @Override
@@ -140,4 +157,9 @@ public class ConditionFragment extends DialogFragment {
 //        // TODO: Update argument type and name
 //        void onListFragmentInteraction(DummyItem item);
 //    }
+
+    public interface ConditionFragmentListener
+    {
+        public void onClickCondition(DialogFragment dialog);
+    }
 }
