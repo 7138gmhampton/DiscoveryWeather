@@ -35,7 +35,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
-                android:labelFor="@id/editTemp"
                 android:text="@string/label_temp"
                 android:textSize="18sp" />
 
@@ -67,7 +66,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:labelFor="@id/editPressure"
                 android:text="@string/label_pressure"
                 android:textSize="18sp" />
 
@@ -94,7 +92,7 @@
             </LinearLayout>
 
             <TextView
-                android:id="@+id/textView4"
+                android:id="@+id/textWindDirection"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -111,7 +109,6 @@
                     android:id="@+id/seekWind"
                     android:layout_width="match_parent"
                     android:layout_height="32dp"
-                    android:layout_marginEnd="8dp"
                     android:max="359" />
 
                 <TextView
@@ -130,7 +127,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:labelFor="@id/editSpeed"
                 android:text="@string/label_speed"
                 android:textSize="18sp" />
 
@@ -161,7 +157,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:labelFor="@id/editRain"
                 android:text="@string/label_rain"
                 android:textSize="18sp" />
 
@@ -192,7 +187,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:labelFor="@id/editSnow"
                 android:text="@string/label_snow"
                 android:textSize="18sp" />
 
