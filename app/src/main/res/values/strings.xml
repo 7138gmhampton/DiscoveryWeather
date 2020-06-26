@@ -15,6 +15,7 @@
     <string name="label_conditions">Overall Conditions</string>
     <string name="display_error">ERROR</string>
     <string name="display_wind_direction">%d\u00B0</string>
+    <string name="placeholder_condition">-Select Condition-</string>
 
     <string name="radio_sunny">Sunny</string>
     <string name="radio_overcast">Cloudy</string>

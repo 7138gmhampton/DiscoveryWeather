@@ -21,6 +21,8 @@ public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeL
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_weather_report);
 
+        //TextView thing = findViewById(R.id.)
+
         ((SeekBar)findViewById(R.id.seekWind)).setOnSeekBarChangeListener(this);
         findViewById(R.id.textConditionSelected).setOnClickListener(this);
 
@@ -70,8 +72,20 @@ public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeL
 
     private void updateWindDirectionDisplay()
     {
-        ((TextView)findViewById(R.id.textDirectionDisplay)).setText(getString(
+        ((TextView)findViewById(R.id.textDirectionDisplay)).
+                setText(getString(
                 R.string.display_wind_direction,
                 ((SeekBar)findViewById(R.id.seekWind)).getProgress()));
+    }
+
+    private void updateSelectedConditionDisplay()
+    {
+        TextView condition_display = findViewById(R.id.textConditionSelected);
+
+        if (selected_condition < 0) condition_display.setText(R.string.placeholder_condition);
+        else {
+            String[] conditions = getResources().getStringArray(R.array.dummy_conditions);
+            condition_display.setText(conditions[selected_condition]);
+        }
     }
 }
