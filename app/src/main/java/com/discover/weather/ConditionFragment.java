@@ -57,16 +57,25 @@ public class ConditionFragment extends DialogFragment {
     {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
-        builder.setMessage(R.string.display_error).
-                setPositiveButton(R.string.display_error,
-                        new DialogInterface.OnClickListener()
-                        {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which)
-                            {
-                                //This is a dummy anyway
-                            }
-                        });
+//        builder.setMessage(R.string.display_error).
+//                setPositiveButton(R.string.display_error,
+//                        new DialogInterface.OnClickListener()
+//                        {
+//                            @Override
+//                            public void onClick(DialogInterface dialog, int which)
+//                            {
+//                                //This is a dummy anyway
+//                            }
+//                        });
+        builder.setTitle(R.string.label_conditions).
+                setItems(R.array.dummy_conditions, new DialogInterface.OnClickListener()
+                {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which)
+                    {
+                        // TODO Complete the action for returning the selection
+                    }
+                });
 
         return builder.create();
     }
