@@ -21,6 +21,7 @@ public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeL
         setContentView(R.layout.activity_weather_report);
 
         ((SeekBar)findViewById(R.id.seekWind)).setOnSeekBarChangeListener(this);
+        findViewById(R.id.textConditionSelected).setOnClickListener(this);
     }
 
     @Override
