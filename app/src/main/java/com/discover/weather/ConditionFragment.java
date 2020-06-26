@@ -39,7 +39,6 @@ public class ConditionFragment extends DialogFragment
                     @Override
                     public void onClick(DialogInterface dialog, int which)
                     {
-                        // TODO Complete the action for returning the selection
                         listener.onClickCondition(ConditionFragment.this, which);
                     }
                 });
