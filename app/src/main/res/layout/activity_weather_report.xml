@@ -35,10 +35,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
+                android:labelFor="@id/layoutTemp"
                 android:text="@string/label_temp"
                 android:textSize="18sp" />
 
             <LinearLayout
+                android:id="@+id/layoutTemp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
@@ -66,10 +68,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
+                android:labelFor="@id/layoutPressure"
                 android:text="@string/label_pressure"
                 android:textSize="18sp" />
 
             <LinearLayout
+                android:id="@+id/layoutPressure"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
@@ -79,14 +83,18 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:ems="10"
+                    android:focusable="false"
                     android:importantForAccessibility="no"
+                    android:importantForAutofill="no"
                     android:inputType="numberDecimal"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"
+                    tools:ignore="labelFor" />
 
                 <TextView
                     android:id="@+id/textPressureUnit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:focusable="false"
                     android:text="@string/label_pressure_unit"
                     android:textSize="18sp" />
             </LinearLayout>
@@ -96,10 +104,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
+                android:labelFor="@id/layoutWindDirection"
                 android:text="@string/label_direction"
                 android:textSize="18sp" />
 
             <LinearLayout
+                android:id="@+id/layoutWindDirection"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
@@ -127,10 +137,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
+                android:labelFor="@id/layoutWindSpeed"
                 android:text="@string/label_speed"
                 android:textSize="18sp" />
 
             <LinearLayout
+                android:id="@+id/layoutWindSpeed"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
@@ -141,8 +153,10 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:importantForAccessibility="no"
+                    android:importantForAutofill="no"
                     android:inputType="numberDecimal"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"
+                    tools:ignore="labelFor"/>
 
                 <TextView
                     android:id="@+id/textSpeedUnit"
@@ -157,10 +171,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
+                android:labelFor="@id/layoutRain"
                 android:text="@string/label_rain"
                 android:textSize="18sp" />
 
             <LinearLayout
+                android:id="@+id/layoutRain"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
@@ -171,8 +187,10 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:importantForAccessibility="no"
+                    android:importantForAutofill="no"
                     android:inputType="number"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"
+                    tools:ignore="labelFor"/>
 
                 <TextView
                     android:id="@+id/textRainUnit"
@@ -187,10 +205,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
+                android:labelFor="@id/layoutSnow"
                 android:text="@string/label_snow"
                 android:textSize="18sp" />
 
             <LinearLayout
+                android:id="@+id/layoutSnow"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
@@ -203,7 +223,8 @@
                     android:importantForAccessibility="no"
                     android:importantForAutofill="no"
                     android:inputType="number"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"
+                    tools:ignore="labelFor"/>
 
                 <TextView
                     android:id="@+id/textSnowUnit"
