@@ -11,8 +11,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 
 public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeListener,
-        OnClickListener
+        OnClickListener, ConditionFragment.ConditionFragmentListener
 {
+    private int selected_condition;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -22,6 +23,8 @@ public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeL
 
         ((SeekBar)findViewById(R.id.seekWind)).setOnSeekBarChangeListener(this);
         findViewById(R.id.textConditionSelected).setOnClickListener(this);
+
+        selected_condition = -1;
     }
 
     @Override
@@ -52,6 +55,17 @@ public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeL
                 DialogFragment condition_dialog = new ConditionFragment();
                 condition_dialog.show(getSupportFragmentManager(), "conditions");
         }
+    }
+
+    @Override
+    public void onClickCondition(DialogFragment dialog, int index)
+    {
+        String[] conditions = getResources().getStringArray(R.array.dummy_conditions);
+
+        selected_condition = index;
+
+        TextView condition_display = findViewById(R.id.textConditionSelected);
+        condition_display.setText(conditions[selected_condition]);
     }
 
     private void updateWindDirectionDisplay()

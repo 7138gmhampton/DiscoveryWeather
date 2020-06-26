@@ -20,6 +20,7 @@ import com.discover.weather.dummy.DummyContent;
 import com.discover.weather.dummy.DummyContent.DummyItem;
 
 import java.util.List;
+import java.util.concurrent.locks.Condition;
 
 /**
  * A fragment representing a list of Items.
@@ -77,6 +78,7 @@ public class ConditionFragment extends DialogFragment {
                     public void onClick(DialogInterface dialog, int which)
                     {
                         // TODO Complete the action for returning the selection
+                        listener.onClickCondition(ConditionFragment.this, which);
                     }
                 });
 
@@ -160,6 +162,6 @@ public class ConditionFragment extends DialogFragment {
 
     public interface ConditionFragmentListener
     {
-        public void onClickCondition(DialogFragment dialog);
+        public void onClickCondition(DialogFragment dialog, int index);
     }
 }
