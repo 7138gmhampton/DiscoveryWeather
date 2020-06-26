@@ -1,13 +1,17 @@
 package com.discover.weather;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
+import android.view.View.OnClickListener;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
 
-public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeListener
+public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeListener,
+        OnClickListener
 {
 
     @Override
@@ -38,6 +42,16 @@ public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeL
 
     @Override
     public void onStopTrackingTouch(SeekBar seekBar) {}
+
+    @Override
+    public void onClick(View view)
+    {
+        switch (view.getId()) {
+            case R.id.textConditionSelected:
+                DialogFragment condition_dialog = new ConditionFragment();
+                condition_dialog.show(getSupportFragmentManager(), "conditions");
+        }
+    }
 
     private void updateWindDirectionDisplay()
     {
