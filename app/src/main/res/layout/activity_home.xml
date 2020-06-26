@@ -20,7 +20,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/dw_logo"
-        tools:srcCompat="@drawable/dw_logo" />
+        tools:srcCompat="@drawable/dw_logo"
+        tools:ignore="ContentDescription"/>
 
     <Button
         android:id="@+id/buttonPost"
