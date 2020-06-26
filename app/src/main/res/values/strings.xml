@@ -19,4 +19,10 @@
     <string name="radio_sunny">Sunny</string>
     <string name="radio_overcast">Cloudy</string>
     <string name="radio_rainy">Raining</string>
+
+    <string-array name="dummy_conditions">
+        <item name="condition_sunny">Sunny</item>
+        <item name="condition_rainy">Rainy</item>
+        <item name="condition_cloudy">Cloudy</item>
+    </string-array>
 </resources>
