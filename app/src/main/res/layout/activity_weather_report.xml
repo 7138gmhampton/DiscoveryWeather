@@ -101,21 +101,29 @@
                 android:text="@string/label_direction"
                 android:textSize="18sp" />
 
-            <SeekBar
-                android:id="@+id/seekWind"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="32dp"
-                android:layout_marginEnd="64dp"
-                android:max="359" />
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/textDirectionDisplay"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/display_error"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                <SeekBar
+                    android:id="@+id/seekWind"
+                    android:layout_width="match_parent"
+                    android:layout_height="32dp"
+                    android:layout_marginEnd="8dp"
+                    android:max="359" />
+
+                <TextView
+                    android:id="@+id/textDirectionDisplay"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/display_error"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/textSpeed"
