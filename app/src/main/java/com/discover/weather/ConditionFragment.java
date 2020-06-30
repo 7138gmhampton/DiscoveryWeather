@@ -88,7 +88,7 @@ public class ConditionFragment extends DialogFragment
 
     public interface ConditionFragmentListener
     {
-        public void onClickCondition(DialogFragment dialog, int index);
+        void onClickCondition(DialogFragment dialog, int index);
     }
 
     private void pollOverallConditionsFromDatabase()
