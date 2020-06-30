@@ -19,7 +19,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 public class ConditionFragment extends DialogFragment
 {
-    ConditionFragmentListener listener;
+    private ConditionFragmentListener listener;
 
     public ConditionFragment() { }
 
