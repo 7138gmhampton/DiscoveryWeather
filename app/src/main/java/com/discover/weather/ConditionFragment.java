@@ -17,6 +17,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.util.Objects;
+
 public class ConditionFragment extends DialogFragment
 {
     private ConditionFragmentListener listener;
@@ -29,8 +31,10 @@ public class ConditionFragment extends DialogFragment
     {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 //        String conditions[] =
-        ArrayAdapter conditions = ArrayAdapter.createFromResource(getContext(),
-                R.array.dummy_conditions, android.R.layout.simple_list_item_1);
+        ArrayAdapter conditions = ArrayAdapter.createFromResource(
+                Objects.requireNonNull(getContext()),
+                R.array.dummy_conditions,
+                android.R.layout.simple_list_item_1);
 
 //        FirebaseFirestore database = FirebaseFirestore.getInstance();
 //        database.collection("condition").get().addOnCompleteListener(
