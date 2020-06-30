@@ -19,6 +19,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.Objects;
 
+@SuppressWarnings("ALL")
 public class ConditionFragment extends DialogFragment
 {
     private ConditionFragmentListener listener;
@@ -100,6 +101,7 @@ public class ConditionFragment extends DialogFragment
                 public void onComplete(@NonNull Task<QuerySnapshot> task)
                 {
                     if (task.isSuccessful())
+                        //noinspection ConstantConditions
                         for (QueryDocumentSnapshot document : task.getResult())
                             Log.d("database", document.getId() + ": " +
                                     document.getString("display"));
