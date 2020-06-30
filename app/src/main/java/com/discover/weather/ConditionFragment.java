@@ -24,26 +24,29 @@ public class ConditionFragment extends DialogFragment
     public ConditionFragment() { }
 
     @Override
+    @NonNull
     public Dialog onCreateDialog(Bundle savedInstanceState)
     {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 //        String conditions[] =
-        ArrayAdapter conditions = ArrayAdapter.createFromResource(getContext(), R.array.dummy_conditions, android.R.layout.simple_list_item_1);
+        ArrayAdapter conditions = ArrayAdapter.createFromResource(getContext(),
+                R.array.dummy_conditions, android.R.layout.simple_list_item_1);
 
-        FirebaseFirestore database = FirebaseFirestore.getInstance();
-        database.collection("condition").get().addOnCompleteListener(
-            new OnCompleteListener<QuerySnapshot>()
-            {
-                public void onComplete(@NonNull Task<QuerySnapshot> task)
-                {
-                    if (task.isSuccessful())
-                        for (QueryDocumentSnapshot document : task.getResult())
-                            Log.d("database", document.getId() + ": " +
-                                    document.getString("display"));
-                    else Log.d("database", "Error querying: " +
-                            task.getException());
-                }
-            });
+//        FirebaseFirestore database = FirebaseFirestore.getInstance();
+//        database.collection("condition").get().addOnCompleteListener(
+//            new OnCompleteListener<QuerySnapshot>()
+//            {
+//                public void onComplete(@NonNull Task<QuerySnapshot> task)
+//                {
+//                    if (task.isSuccessful())
+//                        for (QueryDocumentSnapshot document : task.getResult())
+//                            Log.d("database", document.getId() + ": " +
+//                                    document.getString("display"));
+//                    else Log.d("database", "Error querying: " +
+//                            task.getException());
+//                }
+//            });
+        pollOverallConditionsFromDatabase();
         builder.setTitle(R.string.label_conditions).
 //                setItems(R.array.dummy_conditions, new DialogInterface.OnClickListener()
 //                {
@@ -82,5 +85,23 @@ public class ConditionFragment extends DialogFragment
     public interface ConditionFragmentListener
     {
         public void onClickCondition(DialogFragment dialog, int index);
+    }
+
+    private void pollOverallConditionsFromDatabase()
+    {
+        FirebaseFirestore database = FirebaseFirestore.getInstance();
+        database.collection("condition").get().addOnCompleteListener(
+            new OnCompleteListener<QuerySnapshot>()
+            {
+                public void onComplete(@NonNull Task<QuerySnapshot> task)
+                {
+                    if (task.isSuccessful())
+                        for (QueryDocumentSnapshot document : task.getResult())
+                            Log.d("database", document.getId() + ": " +
+                                    document.getString("display"));
+                    else Log.d("database", "Error querying: " +
+                            task.getException());
+                }
+            });
     }
 }
