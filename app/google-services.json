@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "108982548434",
+    "firebase_url": "https://discoveryweather-6d30f.firebaseio.com",
+    "project_id": "discoveryweather-6d30f",
+    "storage_bucket": "discoveryweather-6d30f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:108982548434:android:a1a531e4fe7c02c9e7ba0b",
+        "android_client_info": {
+          "package_name": "com.discover.weather"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "108982548434-e277esjnsnfu52es86rrdba02ndf5hdg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAWUiUILt3amzgWHnr_VLx3C4_cejHQEZ4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "108982548434-e277esjnsnfu52es86rrdba02ndf5hdg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
