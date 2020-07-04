@@ -21,7 +21,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
-@SuppressWarnings("ALL")
 public class ConditionFragment extends DialogFragment
 {
     private ConditionFragmentListener listener;
@@ -101,5 +100,17 @@ public class ConditionFragment extends DialogFragment
         Log.d("pass", "Condition set size: " + overall_condition_options_.size());
         for (Map.Entry<Integer, String> condition : overall_condition_options_.entrySet())
             Log.d("pass",condition.getKey().toString() + " -> " + condition.getValue());
+    }
+
+    private ArrayAdapter prepareAdapter(HashMap<Integer,String> conditions)
+    {
+        String[] options = conditions.values().toArray(new String[conditions.size()]);
+        ArrayAdapter adapter = new ArrayAdapter(
+                getContext(),
+                android.R.layout.simple_list_item_1);
+
+        adapter.addAll(options);
+
+        return adapter;
     }
 }
