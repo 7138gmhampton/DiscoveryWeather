@@ -37,7 +37,8 @@ public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeL
         findViewById(R.id.textConditionSelected).setOnClickListener(this);
         overall_condition_options_ = new HashMap<>();
         FirebaseFirestore database = FirebaseFirestore.getInstance();
-        database.collection("condition").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>()
+        database.collection("condition").get().addOnCompleteListener(new
+            OnCompleteListener<QuerySnapshot>()
         {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task)
@@ -86,8 +87,10 @@ public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeL
         switch (view.getId()) {
             case R.id.textConditionSelected:
                 Bundle condition_options_bundle = new Bundle();
-                condition_options_bundle.putSerializable("options", overall_condition_options_);
-                DialogFragment condition_dialog = new ConditionFragment(overall_condition_options_);
+                condition_options_bundle.putSerializable("options",
+                        overall_condition_options_);
+                DialogFragment condition_dialog = new ConditionFragment(
+                        overall_condition_options_);
                 condition_dialog.setArguments(condition_options_bundle);
                 condition_dialog.show(getSupportFragmentManager(), "conditions");
         }
@@ -120,8 +123,10 @@ public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeL
 
     private void logDrawnConditions()
     {
-        Log.d("database", "Condition set size: " + overall_condition_options_.size());
+        Log.d("database", "Condition set size: " +
+                overall_condition_options_.size());
         for (Map.Entry<Integer, String> condition : overall_condition_options_.entrySet())
-            Log.d("database",condition.getKey().toString() + " -> " + condition.getValue());
+            Log.d("database",condition.getKey().toString() + " -> " +
+                    condition.getValue());
     }
 }
