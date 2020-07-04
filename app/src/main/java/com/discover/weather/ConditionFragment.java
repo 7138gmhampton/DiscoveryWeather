@@ -27,61 +27,24 @@ public class ConditionFragment extends DialogFragment
     private ConditionFragmentListener listener;
     private Map<Integer, String> overall_condition_options_;
 
-    public ConditionFragment()
-    {
-//        overall_condition_options_.putAll(overall_condition_options);
-    }
+    public ConditionFragment() { }
 
     @Override
     @NonNull
     public Dialog onCreateDialog(Bundle savedInstanceState)
     {
         Bundle condition_options_argument = getArguments();
-//        overall_condition_options_.putAll((Map<Integer,String>) condition_options_argument.getSerializable("options"));
-        Log.d("pass", condition_options_argument.toString());
         HashMap<Integer,String> temp_map = (HashMap<Integer, String>) condition_options_argument.getSerializable("options");
-//        Log.d("pass", "Size of hashmap created:" + temp_map.size());
         overall_condition_options_ = new HashMap<Integer,String>();
         overall_condition_options_.putAll(temp_map);
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-//        String conditions[] =
         String[] condition_options = overall_condition_options_.values().toArray(new String[overall_condition_options_.size()]);
-//        ArrayAdapter conditions = ArrayAdapter.createFromResource(
-//                Objects.requireNonNull(getContext()),
-//                R.array.dummy_conditions,
-//                android.R.layout.simple_list_item_1);
-//        ArrayAdapter conditions = new ArrayAdapter(
-//                Objects.requireNonNull(getContext(),
-//                android.R.layout.simple_list_item_1,
-//                condition_options));
         ArrayAdapter conditions = new ArrayAdapter(
                 Objects.requireNonNull(getContext()),
                 android.R.layout.simple_list_item_1);
         conditions.addAll(condition_options);
 
-//        FirebaseFirestore database = FirebaseFirestore.getInstance();
-//        database.collection("condition").get().addOnCompleteListener(
-//            new OnCompleteListener<QuerySnapshot>()
-//            {
-//                public void onComplete(@NonNull Task<QuerySnapshot> task)
-//                {
-//                    if (task.isSuccessful())
-//                        for (QueryDocumentSnapshot document : task.getResult())
-//                            Log.d("database", document.getId() + ": " +
-//                                    document.getString("display"));
-//                    else Log.d("database", "Error querying: " +
-//                            task.getException());
-//                }
-//            });
-//        pollOverallConditionsFromDatabase();
         builder.setTitle(R.string.label_conditions).
-//                setItems(R.array.dummy_conditions, new DialogInterface.OnClickListener()
-//                {
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int which)
-//                    {
-//                        listener.onClickCondition(ConditionFragment.this, which);
-//                    }
             setAdapter(conditions, new DialogInterface.OnClickListener()
             {
                 @Override
@@ -92,9 +55,6 @@ public class ConditionFragment extends DialogFragment
 
             });
 
-        logConditionOptions();
-//        for (Map.Entry<Integer,String> condition : temp_map.entrySet())
-//            Log.d("pass", condition.getKey().toString() + " -> " + condition.getValue());
         return builder.create();
     }
 
