@@ -1,5 +1,6 @@
 package com.discover.weather;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -102,6 +103,7 @@ public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeL
         else condition_display.setText(overall_condition_options_.get(selected_condition));
     }
 
+    @SuppressLint("UseSparseArrays")
     private void populateConditionOptions()
     {
         overall_condition_options_ = new HashMap<>();
