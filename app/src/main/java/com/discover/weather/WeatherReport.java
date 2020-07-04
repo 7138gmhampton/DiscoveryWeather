@@ -66,8 +66,7 @@ public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeL
     public void onClick(View view)
     {
         switch (view.getId()) {
-            case R.id.textConditionSelected:
-                showConditionDialog();
+            case R.id.textConditionSelected: showConditionDialog();
         }
     }
 
