@@ -40,9 +40,12 @@ public class ConditionFragment extends DialogFragment
 //        overall_condition_options_.putAll((Map<Integer,String>) condition_options_argument.getSerializable("options"));
         Log.d("pass", condition_options_argument.toString());
         HashMap<Integer,String> temp_map = (HashMap<Integer, String>) condition_options_argument.getSerializable("options");
-        Log.d("pass", "Size of hashmap created:" + temp_map.size());
+//        Log.d("pass", "Size of hashmap created:" + temp_map.size());
+        overall_condition_options_ = new HashMap<Integer,String>();
+        overall_condition_options_.putAll(temp_map);
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 //        String conditions[] =
+        String[] condition_options = overall_condition_options_.values().toArray(new String[overall_condition_options_.size()]);
         ArrayAdapter conditions = ArrayAdapter.createFromResource(
                 Objects.requireNonNull(getContext()),
                 R.array.dummy_conditions,
@@ -81,9 +84,9 @@ public class ConditionFragment extends DialogFragment
 
             });
 
-//        logConditionOptions();
-        for (Map.Entry<Integer,String> condition : temp_map.entrySet())
-            Log.d("pass", condition.getKey().toString() + " -> " + condition.getValue());
+        logConditionOptions();
+//        for (Map.Entry<Integer,String> condition : temp_map.entrySet())
+//            Log.d("pass", condition.getKey().toString() + " -> " + condition.getValue());
         return builder.create();
     }
 
@@ -127,8 +130,8 @@ public class ConditionFragment extends DialogFragment
 
     private void logConditionOptions()
     {
-        Log.d("database", "Condition set size: " + overall_condition_options_.size());
+        Log.d("pass", "Condition set size: " + overall_condition_options_.size());
         for (Map.Entry<Integer, String> condition : overall_condition_options_.entrySet())
-            Log.d("database",condition.getKey().toString() + " -> " + condition.getValue());
+            Log.d("pass",condition.getKey().toString() + " -> " + condition.getValue());
     }
 }
