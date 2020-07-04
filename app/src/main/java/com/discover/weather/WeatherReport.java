@@ -122,9 +122,10 @@ public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeL
         Bundle condition_options_bundle = new Bundle();
         condition_options_bundle.putSerializable("options",
                 overall_condition_options_);
-        DialogFragment condition_dialog = new ConditionFragment(
-                overall_condition_options_);
+
+        DialogFragment condition_dialog = new ConditionFragment();
         condition_dialog.setArguments(condition_options_bundle);
+
         condition_dialog.show(getSupportFragmentManager(), "conditions");
     }
 }

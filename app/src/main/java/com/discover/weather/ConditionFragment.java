@@ -27,7 +27,7 @@ public class ConditionFragment extends DialogFragment
     private ConditionFragmentListener listener;
     private Map<Integer, String> overall_condition_options_;
 
-    public ConditionFragment(HashMap<Integer,String> overall_condition_options)
+    public ConditionFragment()
     {
 //        overall_condition_options_.putAll(overall_condition_options);
     }
