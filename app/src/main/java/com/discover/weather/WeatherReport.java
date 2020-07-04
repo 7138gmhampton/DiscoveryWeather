@@ -38,9 +38,6 @@ public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeL
         populateConditionOptions();
 
         selected_condition = -1;
-//        Log.d("database", "Condition set size: " + overall_condition_options_.size());
-//        for (Map.Entry<Integer, String> condition : overall_condition_options_.entrySet())
-//            Log.d("database",condition.getKey().toString() + " -> " + condition.getValue());
     }
 
 
@@ -102,8 +99,6 @@ public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeL
         TextView condition_display = findViewById(R.id.textConditionSelected);
 
         if (selected_condition < 0) condition_display.setText(R.string.placeholder_condition);
-//        else condition_display.setText(getResources().
-//                    getStringArray(R.array.dummy_conditions)[selected_condition]);
         else condition_display.setText(overall_condition_options_.get(selected_condition));
     }
 
@@ -120,6 +115,7 @@ public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeL
     {
         overall_condition_options_ = new HashMap<>();
         FirebaseFirestore database = FirebaseFirestore.getInstance();
+
         database.collection("condition").get().addOnCompleteListener(new
             OnCompleteListener<QuerySnapshot>()
             {
