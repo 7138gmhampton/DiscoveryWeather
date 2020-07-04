@@ -116,6 +116,7 @@ public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeL
              public void onComplete(@NonNull Task<QuerySnapshot> task)
              {
                  if (task.isSuccessful())
+                     //noinspection ConstantConditions
                      for (QueryDocumentSnapshot document : task.getResult()) {
                          overall_condition_options_.put(Integer.parseInt(document.getId()),
                                  document.getString("display"));
