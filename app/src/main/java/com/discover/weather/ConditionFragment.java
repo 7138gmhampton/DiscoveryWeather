@@ -64,7 +64,7 @@ public class ConditionFragment extends DialogFragment
 
     private ArrayAdapter prepareAdapter(HashMap<Integer,String> conditions)
     {
-        String[] options = conditions.values().toArray(new String[conditions.size()]);
+        String[] options = conditions.values().toArray(new String[0]);
         ArrayAdapter adapter = new ArrayAdapter(
                 getContext(),
                 android.R.layout.simple_list_item_1);
