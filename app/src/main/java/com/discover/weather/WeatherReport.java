@@ -4,10 +4,10 @@ import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
-import android.view.View.OnClickListener;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,7 +20,6 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.HashMap;
-import java.util.Map;
 
 public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeListener,
         OnClickListener, ConditionFragment.ConditionFragmentListener
@@ -40,8 +39,6 @@ public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeL
 
         selected_condition = -1;
     }
-
-
 
     @Override
     protected void onStart()
@@ -69,13 +66,7 @@ public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeL
     {
         switch (view.getId()) {
             case R.id.textConditionSelected:
-                Bundle condition_options_bundle = new Bundle();
-                condition_options_bundle.putSerializable("options",
-                        overall_condition_options_);
-                DialogFragment condition_dialog = new ConditionFragment(
-                        overall_condition_options_);
-                condition_dialog.setArguments(condition_options_bundle);
-                condition_dialog.show(getSupportFragmentManager(), "conditions");
+                showConditionDialog();
         }
     }
 
@@ -124,5 +115,16 @@ public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeL
                  else Log.e("database", "Error querying: " + task.getException());
              }
             });
+    }
+
+    private void showConditionDialog()
+    {
+        Bundle condition_options_bundle = new Bundle();
+        condition_options_bundle.putSerializable("options",
+                overall_condition_options_);
+        DialogFragment condition_dialog = new ConditionFragment(
+                overall_condition_options_);
+        condition_dialog.setArguments(condition_options_bundle);
+        condition_dialog.show(getSupportFragmentManager(), "conditions");
     }
 }
