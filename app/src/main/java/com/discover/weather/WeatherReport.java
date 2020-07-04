@@ -24,7 +24,7 @@ import java.util.HashMap;
 public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeListener,
         OnClickListener, ConditionFragment.ConditionFragmentListener
 {
-    private int selected_condition;
+    private int selected_condition_;
     private HashMap<Integer,String> overall_condition_options_;
 
     @Override
@@ -37,7 +37,7 @@ public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeL
         findViewById(R.id.textConditionSelected).setOnClickListener(this);
         populateConditionOptions();
 
-        selected_condition = -1;
+        selected_condition_ = -1;
     }
 
     @Override
@@ -73,7 +73,7 @@ public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeL
     @Override
     public void onClickCondition(DialogFragment dialog, int index)
     {
-        selected_condition = index;
+        selected_condition_ = index;
 
         updateSelectedConditionDisplay();
     }
@@ -90,8 +90,8 @@ public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeL
     {
         TextView condition_display = findViewById(R.id.textConditionSelected);
 
-        if (selected_condition < 0) condition_display.setText(R.string.placeholder_condition);
-        else condition_display.setText(overall_condition_options_.get(selected_condition));
+        if (selected_condition_ < 0) condition_display.setText(R.string.placeholder_condition);
+        else condition_display.setText(overall_condition_options_.get(selected_condition_));
     }
 
     @SuppressLint("UseSparseArrays")
