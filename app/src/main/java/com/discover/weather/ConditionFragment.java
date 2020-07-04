@@ -46,10 +46,18 @@ public class ConditionFragment extends DialogFragment
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 //        String conditions[] =
         String[] condition_options = overall_condition_options_.values().toArray(new String[overall_condition_options_.size()]);
-        ArrayAdapter conditions = ArrayAdapter.createFromResource(
+//        ArrayAdapter conditions = ArrayAdapter.createFromResource(
+//                Objects.requireNonNull(getContext()),
+//                R.array.dummy_conditions,
+//                android.R.layout.simple_list_item_1);
+//        ArrayAdapter conditions = new ArrayAdapter(
+//                Objects.requireNonNull(getContext(),
+//                android.R.layout.simple_list_item_1,
+//                condition_options));
+        ArrayAdapter conditions = new ArrayAdapter(
                 Objects.requireNonNull(getContext()),
-                R.array.dummy_conditions,
                 android.R.layout.simple_list_item_1);
+        conditions.addAll(condition_options);
 
 //        FirebaseFirestore database = FirebaseFirestore.getInstance();
 //        database.collection("condition").get().addOnCompleteListener(
