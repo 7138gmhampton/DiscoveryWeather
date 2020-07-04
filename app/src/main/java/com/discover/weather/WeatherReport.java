@@ -61,6 +61,7 @@ public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeL
     @Override
     public void onStopTrackingTouch(SeekBar seekBar) {}
 
+    @SuppressWarnings("SwitchStatementWithTooFewBranches")
     @Override
     public void onClick(View view)
     {
