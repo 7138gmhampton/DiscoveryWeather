@@ -17,19 +17,30 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 @SuppressWarnings("ALL")
 public class ConditionFragment extends DialogFragment
 {
     private ConditionFragmentListener listener;
+    private Map<Integer, String> overall_condition_options_;
 
-    public ConditionFragment() { }
+    public ConditionFragment(HashMap<Integer,String> overall_condition_options)
+    {
+//        overall_condition_options_.putAll(overall_condition_options);
+    }
 
     @Override
     @NonNull
     public Dialog onCreateDialog(Bundle savedInstanceState)
     {
+        Bundle condition_options_argument = getArguments();
+//        overall_condition_options_.putAll((Map<Integer,String>) condition_options_argument.getSerializable("options"));
+        Log.d("pass", condition_options_argument.toString());
+        HashMap<Integer,String> temp_map = (HashMap<Integer, String>) condition_options_argument.getSerializable("options");
+        Log.d("pass", "Size of hashmap created:" + temp_map.size());
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 //        String conditions[] =
         ArrayAdapter conditions = ArrayAdapter.createFromResource(
@@ -51,7 +62,7 @@ public class ConditionFragment extends DialogFragment
 //                            task.getException());
 //                }
 //            });
-        pollOverallConditionsFromDatabase();
+//        pollOverallConditionsFromDatabase();
         builder.setTitle(R.string.label_conditions).
 //                setItems(R.array.dummy_conditions, new DialogInterface.OnClickListener()
 //                {
@@ -70,6 +81,9 @@ public class ConditionFragment extends DialogFragment
 
             });
 
+//        logConditionOptions();
+        for (Map.Entry<Integer,String> condition : temp_map.entrySet())
+            Log.d("pass", condition.getKey().toString() + " -> " + condition.getValue());
         return builder.create();
     }
 
@@ -109,5 +123,12 @@ public class ConditionFragment extends DialogFragment
                             task.getException());
                 }
             });
+    }
+
+    private void logConditionOptions()
+    {
+        Log.d("database", "Condition set size: " + overall_condition_options_.size());
+        for (Map.Entry<Integer, String> condition : overall_condition_options_.entrySet())
+            Log.d("database",condition.getKey().toString() + " -> " + condition.getValue());
     }
 }

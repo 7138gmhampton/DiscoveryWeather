@@ -25,7 +25,7 @@ public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeL
         OnClickListener, ConditionFragment.ConditionFragmentListener
 {
     private int selected_condition;
-    private Map<Integer,String> overall_condition_options;
+    private HashMap<Integer,String> overall_condition_options_;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -35,7 +35,7 @@ public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeL
 
         ((SeekBar)findViewById(R.id.seekWind)).setOnSeekBarChangeListener(this);
         findViewById(R.id.textConditionSelected).setOnClickListener(this);
-        overall_condition_options = new HashMap<>();
+        overall_condition_options_ = new HashMap<>();
         FirebaseFirestore database = FirebaseFirestore.getInstance();
         database.collection("condition").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>()
         {
@@ -44,7 +44,7 @@ public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeL
             {
                 if (task.isSuccessful())
                     for (QueryDocumentSnapshot document : task.getResult()) {
-                        overall_condition_options.put(Integer.parseInt(document.getId()),
+                        overall_condition_options_.put(Integer.parseInt(document.getId()),
                                 document.getString("display"));
 //                        logDrawnConditions();
                     }
@@ -54,8 +54,8 @@ public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeL
         });
 
         selected_condition = -1;
-//        Log.d("database", "Condition set size: " + overall_condition_options.size());
-//        for (Map.Entry<Integer, String> condition : overall_condition_options.entrySet())
+//        Log.d("database", "Condition set size: " + overall_condition_options_.size());
+//        for (Map.Entry<Integer, String> condition : overall_condition_options_.entrySet())
 //            Log.d("database",condition.getKey().toString() + " -> " + condition.getValue());
     }
 
@@ -85,7 +85,10 @@ public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeL
     {
         switch (view.getId()) {
             case R.id.textConditionSelected:
-                DialogFragment condition_dialog = new ConditionFragment();
+                Bundle condition_options_bundle = new Bundle();
+                condition_options_bundle.putSerializable("options", overall_condition_options_);
+                DialogFragment condition_dialog = new ConditionFragment(overall_condition_options_);
+                condition_dialog.setArguments(condition_options_bundle);
                 condition_dialog.show(getSupportFragmentManager(), "conditions");
         }
     }
@@ -117,8 +120,8 @@ public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeL
 
     private void logDrawnConditions()
     {
-        Log.d("database", "Condition set size: " + overall_condition_options.size());
-        for (Map.Entry<Integer, String> condition : overall_condition_options.entrySet())
+        Log.d("database", "Condition set size: " + overall_condition_options_.size());
+        for (Map.Entry<Integer, String> condition : overall_condition_options_.entrySet())
             Log.d("database",condition.getKey().toString() + " -> " + condition.getValue());
     }
 }
