@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
 
 import java.util.HashMap;
+import java.util.Objects;
 
 public class ConditionFragment extends DialogFragment
 {
@@ -20,9 +21,11 @@ public class ConditionFragment extends DialogFragment
 
     @Override
     @NonNull
+    @SuppressWarnings({"unchecked", "ConstantConditions"})
     public Dialog onCreateDialog(Bundle savedInstanceState)
     {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+
 
         builder.setTitle(R.string.label_conditions).
             setAdapter(prepareAdapter(
