@@ -24,7 +24,7 @@ import java.util.Objects;
 public class ConditionFragment extends DialogFragment
 {
     private ConditionFragmentListener listener;
-    private Map<Integer, String> overall_condition_options_;
+//    private Map<Integer, String> overall_condition_options_;
 
     public ConditionFragment() { }
 
@@ -32,19 +32,21 @@ public class ConditionFragment extends DialogFragment
     @NonNull
     public Dialog onCreateDialog(Bundle savedInstanceState)
     {
-        Bundle condition_options_argument = getArguments();
-        HashMap<Integer,String> temp_map = (HashMap<Integer, String>) condition_options_argument.getSerializable("options");
-        overall_condition_options_ = new HashMap<Integer,String>();
-        overall_condition_options_.putAll(temp_map);
+//        Bundle condition_options_argument = getArguments();
+//        HashMap<Integer,String> temp_map = (HashMap<Integer, String>) condition_options_argument.getSerializable("options");
+//        overall_condition_options_ = new HashMap<Integer,String>();
+//        overall_condition_options_.putAll(temp_map);
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        String[] condition_options = overall_condition_options_.values().toArray(new String[overall_condition_options_.size()]);
-        ArrayAdapter conditions = new ArrayAdapter(
-                Objects.requireNonNull(getContext()),
-                android.R.layout.simple_list_item_1);
-        conditions.addAll(condition_options);
+//        String[] condition_options = overall_condition_options_.values().toArray(new String[overall_condition_options_.size()]);
+//        ArrayAdapter conditions = new ArrayAdapter(
+//                Objects.requireNonNull(getContext()),
+//                android.R.layout.simple_list_item_1);
+//        conditions.addAll(condition_options);
 
         builder.setTitle(R.string.label_conditions).
-            setAdapter(conditions, new DialogInterface.OnClickListener()
+            setAdapter(prepareAdapter(
+                    (HashMap<Integer,String>) getArguments().getSerializable("options")),
+                    new DialogInterface.OnClickListener()
             {
                 @Override
                 public void onClick(DialogInterface dialog, int which)
@@ -95,12 +97,12 @@ public class ConditionFragment extends DialogFragment
             });
     }
 
-    private void logConditionOptions()
-    {
-        Log.d("pass", "Condition set size: " + overall_condition_options_.size());
-        for (Map.Entry<Integer, String> condition : overall_condition_options_.entrySet())
-            Log.d("pass",condition.getKey().toString() + " -> " + condition.getValue());
-    }
+//    private void logConditionOptions()
+//    {
+//        Log.d("pass", "Condition set size: " + overall_condition_options_.size());
+//        for (Map.Entry<Integer, String> condition : overall_condition_options_.entrySet())
+//            Log.d("pass",condition.getKey().toString() + " -> " + condition.getValue());
+//    }
 
     private ArrayAdapter prepareAdapter(HashMap<Integer,String> conditions)
     {
