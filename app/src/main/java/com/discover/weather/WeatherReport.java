@@ -35,30 +35,15 @@ public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeL
 
         ((SeekBar)findViewById(R.id.seekWind)).setOnSeekBarChangeListener(this);
         findViewById(R.id.textConditionSelected).setOnClickListener(this);
-        overall_condition_options_ = new HashMap<>();
-        FirebaseFirestore database = FirebaseFirestore.getInstance();
-        database.collection("condition").get().addOnCompleteListener(new
-            OnCompleteListener<QuerySnapshot>()
-        {
-            @Override
-            public void onComplete(@NonNull Task<QuerySnapshot> task)
-            {
-                if (task.isSuccessful())
-                    for (QueryDocumentSnapshot document : task.getResult()) {
-                        overall_condition_options_.put(Integer.parseInt(document.getId()),
-                                document.getString("display"));
-//                        logDrawnConditions();
-                    }
-                else Log.e("database", "Error querying: " + task.getException());
-                logDrawnConditions();
-            }
-        });
+        populateConditionOptions();
 
         selected_condition = -1;
 //        Log.d("database", "Condition set size: " + overall_condition_options_.size());
 //        for (Map.Entry<Integer, String> condition : overall_condition_options_.entrySet())
 //            Log.d("database",condition.getKey().toString() + " -> " + condition.getValue());
     }
+
+
 
     @Override
     protected void onStart()
@@ -128,5 +113,25 @@ public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeL
         for (Map.Entry<Integer, String> condition : overall_condition_options_.entrySet())
             Log.d("database",condition.getKey().toString() + " -> " +
                     condition.getValue());
+    }
+
+    private void populateConditionOptions()
+    {
+        overall_condition_options_ = new HashMap<>();
+        FirebaseFirestore database = FirebaseFirestore.getInstance();
+        database.collection("condition").get().addOnCompleteListener(new
+            OnCompleteListener<QuerySnapshot>()
+            {
+             @Override
+             public void onComplete(@NonNull Task<QuerySnapshot> task)
+             {
+                 if (task.isSuccessful())
+                     for (QueryDocumentSnapshot document : task.getResult()) {
+                         overall_condition_options_.put(Integer.parseInt(document.getId()),
+                                 document.getString("display"));
+                     }
+                 else Log.e("database", "Error querying: " + task.getException());
+             }
+            });
     }
 }
