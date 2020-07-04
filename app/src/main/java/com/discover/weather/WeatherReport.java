@@ -102,15 +102,6 @@ public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeL
         else condition_display.setText(overall_condition_options_.get(selected_condition));
     }
 
-    private void logDrawnConditions()
-    {
-        Log.d("database", "Condition set size: " +
-                overall_condition_options_.size());
-        for (Map.Entry<Integer, String> condition : overall_condition_options_.entrySet())
-            Log.d("database",condition.getKey().toString() + " -> " +
-                    condition.getValue());
-    }
-
     private void populateConditionOptions()
     {
         overall_condition_options_ = new HashMap<>();
