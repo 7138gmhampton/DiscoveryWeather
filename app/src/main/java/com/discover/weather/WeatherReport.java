@@ -102,8 +102,9 @@ public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeL
         TextView condition_display = findViewById(R.id.textConditionSelected);
 
         if (selected_condition < 0) condition_display.setText(R.string.placeholder_condition);
-        else condition_display.setText(getResources().
-                    getStringArray(R.array.dummy_conditions)[selected_condition]);
+//        else condition_display.setText(getResources().
+//                    getStringArray(R.array.dummy_conditions)[selected_condition]);
+        else condition_display.setText(overall_condition_options_.get(selected_condition));
     }
 
     private void logDrawnConditions()
