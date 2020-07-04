@@ -15,7 +15,7 @@ import java.util.Objects;
 
 public class ConditionFragment extends DialogFragment
 {
-    private ConditionFragmentListener listener;
+    private ConditionFragmentListener listener_;
 
     public ConditionFragment() { }
 
@@ -35,9 +35,8 @@ public class ConditionFragment extends DialogFragment
                 @Override
                 public void onClick(DialogInterface dialog, int which)
                 {
-                    listener.onClickCondition(ConditionFragment.this, which);
+                    listener_.onClickCondition(ConditionFragment.this, which);
                 }
-
             });
 
         return builder.create();
@@ -49,7 +48,7 @@ public class ConditionFragment extends DialogFragment
         super.onAttach(context);
 
         try {
-            listener = (ConditionFragmentListener)context;
+            listener_ = (ConditionFragmentListener)context;
         }
         catch (ClassCastException err) {
             throw new ClassCastException(getActivity().toString() +
