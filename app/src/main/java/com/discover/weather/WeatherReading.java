@@ -8,7 +8,7 @@ public class WeatherReading implements Parcelable
     private Float temperature_in_celsius;
     private static final int NO_DATA_POINTS = 1;
 
-    private static final Parcelable.Creator<WeatherReading> CREATOR =
+    public static final Parcelable.Creator<WeatherReading> CREATOR =
             new Parcelable.Creator<WeatherReading>()
             {
                 public WeatherReading createFromParcel(Parcel in)
@@ -35,7 +35,7 @@ public class WeatherReading implements Parcelable
         this.temperature_in_celsius = (Float)in.readValue(null);
     }
 
-    public float getTemperature() { return temperature_in_celsius; }
+    public Float getTemperature() { return temperature_in_celsius; }
 
     @Override
     public int describeContents() { return 0; }
