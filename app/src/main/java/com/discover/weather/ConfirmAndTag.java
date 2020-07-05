@@ -13,8 +13,8 @@ import com.google.android.gms.maps.model.LatLng;
 
 public class ConfirmAndTag extends AppCompatActivity implements OnMapReadyCallback
 {
-    private MapView map_view_;
-    private GoogleMap map_;
+    private MapView map_view;
+    private GoogleMap map;
 
     private static final String MAP_VIEW_BUNDLE_KEY = "MAPVIEWBUNDLEKEY";
 
@@ -25,12 +25,12 @@ public class ConfirmAndTag extends AppCompatActivity implements OnMapReadyCallba
         setContentView(R.layout.activity_confirm_and_tag);
 
         Bundle map_view_bundle = null;
-        if (savedInstanceState != null) map_view_bundle =
-                savedInstanceState.getBundle(MAP_VIEW_BUNDLE_KEY);
+        if (savedInstanceState != null)
+            map_view_bundle = savedInstanceState.getBundle(MAP_VIEW_BUNDLE_KEY);
 
-        map_view_ = findViewById(R.id.mapView);
-        map_view_.onCreate(map_view_bundle);
-        map_view_.getMapAsync(this);
+        map_view = findViewById(R.id.mapView);
+        map_view.onCreate(map_view_bundle);
+        map_view.getMapAsync(this);
         // Log check the parcellable transfer
         WeatherReading reading = (WeatherReading)getIntent().getExtras().getParcelable("reading");
         if (reading.getTemperature() == null)
@@ -52,57 +52,57 @@ public class ConfirmAndTag extends AppCompatActivity implements OnMapReadyCallba
             out_state.putBundle(MAP_VIEW_BUNDLE_KEY, map_view_bundle);
         }
 
-        map_view_.onSaveInstanceState(map_view_bundle);
+        map_view.onSaveInstanceState(map_view_bundle);
     }
 
     @Override
     protected void onResume()
     {
         super.onResume();
-        map_view_.onResume();
+        map_view.onResume();
     }
 
     @Override
     protected void onStart()
     {
         super.onStart();
-        map_view_.onStart();
+        map_view.onStart();
     }
 
     @Override
     protected void onStop()
     {
         super.onStop();
-        map_view_.onStop();
+        map_view.onStop();
     }
 
     @Override
     protected void onPause()
     {
         super.onPause();
-        map_view_.onPause();
+        map_view.onPause();
     }
 
     @Override
     protected void onDestroy()
     {
         super.onDestroy();
-        map_view_.onDestroy();
+        map_view.onDestroy();
     }
 
     @Override
     public void onLowMemory()
     {
         super.onLowMemory();
-        map_view_.onLowMemory();
+        map_view.onLowMemory();
     }
 
     @Override
     public void onMapReady(GoogleMap map)
     {
-        map_ = map;
-        map_.setMinZoomPreference(12);
-        map_.moveCamera(CameraUpdateFactory.newLatLng(
+        this.map = map;
+        this.map.setMinZoomPreference(12);
+        this.map.moveCamera(CameraUpdateFactory.newLatLng(
                 new LatLng(56.463266, -2.974478)));
     }
 }
