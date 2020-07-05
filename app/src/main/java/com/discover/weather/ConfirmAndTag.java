@@ -20,6 +20,7 @@ public class ConfirmAndTag extends AppCompatActivity implements OnMapReadyCallba
     private static final String MAP_VIEW_BUNDLE_KEY = "MAPVIEWBUNDLEKEY";
 
     @Override
+    @SuppressWarnings("ConstantConditions")
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
