@@ -11,13 +11,14 @@ import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 
+@SuppressWarnings("FieldCanBeLocal")
 public class ConfirmAndTag extends AppCompatActivity implements OnMapReadyCallback
 {
     private MapView map_view;
     private GoogleMap map;
     private WeatherReading reading;
 
-    private static final String MAP_VIEW_BUNDLE_KEY = "MAPVIEWBUNDLEKEY";
+    private static final String MAP_VIEW_BUNDLE_KEY = "MAP_VIEW_BUNDLE_KEY";
 
     @Override
     @SuppressWarnings("ConstantConditions")
@@ -34,7 +35,6 @@ public class ConfirmAndTag extends AppCompatActivity implements OnMapReadyCallba
         map_view.onCreate(map_view_bundle);
         map_view.getMapAsync(this);
         reading = getIntent().getExtras().getParcelable(("reading"));
-        // Log check the parcellable transfer
 //        WeatherReading reading = (WeatherReading)getIntent().getExtras().getParcelable("reading");
         if (reading.getTemperature() == null)
             Log.d("pass", "Temp unset");
