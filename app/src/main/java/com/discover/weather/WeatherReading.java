@@ -7,8 +7,8 @@ import javax.annotation.Nullable;
 
 public class WeatherReading implements Parcelable
 {
-    private Float temperature_in_celsius;
-    private Float pressure_in_hectopascals;
+    private final Float temperature_in_celsius;
+    private final Float pressure_in_hectopascals;
 
     public static final Parcelable.Creator<WeatherReading> CREATOR =
             new Parcelable.Creator<WeatherReading>()
