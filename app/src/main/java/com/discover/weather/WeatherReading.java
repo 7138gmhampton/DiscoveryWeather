@@ -25,7 +25,7 @@ public class WeatherReading implements Parcelable
                 }
             };
 
-    public WeatherReading(
+    WeatherReading(
             @Nullable Float temperature_in_celsius,
             @Nullable Float pressure_in_hectopascals)
     {
@@ -33,7 +33,7 @@ public class WeatherReading implements Parcelable
         this.pressure_in_hectopascals = pressure_in_hectopascals;
     }
 
-    public WeatherReading(Parcel in)
+    private WeatherReading(Parcel in)
     {
 //        String[] data = new String[NO_DATA_POINTS];
 //        in.readStringArray(data);
@@ -42,8 +42,8 @@ public class WeatherReading implements Parcelable
         this.pressure_in_hectopascals = (Float)in.readValue((null));
     }
 
-    @Nullable public Float getTemperature() { return temperature_in_celsius; }
-    @Nullable public Float getPressure() { return pressure_in_hectopascals; }
+    @Nullable Float getTemperature() { return temperature_in_celsius; }
+    @Nullable Float getPressure() { return pressure_in_hectopascals; }
 
     @Override
     public int describeContents() { return 0; }
