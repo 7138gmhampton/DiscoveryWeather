@@ -70,8 +70,8 @@ public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeL
     {
         switch (view.getId()) {
             case R.id.textConditionSelected: showConditionDialog(); break;
-            case R.id.btnConfirm:
-                startActivity(new Intent(getApplicationContext(), ConfirmAndTag.class));
+            case R.id.btnConfirm: submitReadingForConfirmation();
+//                startActivity(new Intent(getApplicationContext(), ConfirmAndTag.class));
         }
     }
 

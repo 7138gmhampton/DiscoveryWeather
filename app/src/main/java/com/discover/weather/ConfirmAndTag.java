@@ -3,6 +3,7 @@ package com.discover.weather;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -30,6 +31,11 @@ public class ConfirmAndTag extends AppCompatActivity implements OnMapReadyCallba
         map_view_ = findViewById(R.id.mapView);
         map_view_.onCreate(map_view_bundle);
         map_view_.getMapAsync(this);
+        // Log check the parcellable transfer
+        WeatherReading reading = (WeatherReading)getIntent().getExtras().getParcelable("reading");
+        if (reading.getTemperature() == null)
+            Log.d("pass", "Temp unset");
+        else Log.d("pass", "The temp is: " + reading.getTemperature());
     }
 
     @Override
