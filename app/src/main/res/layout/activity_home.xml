@@ -19,9 +19,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/dw_logo"
-        tools:srcCompat="@drawable/dw_logo"
-        tools:ignore="ContentDescription"/>
+        app:srcCompat="@mipmap/dw_logo"
+        tools:ignore="ContentDescription"
+        tools:srcCompat="@mipmap/dw_logo" />
 
     <Button
         android:id="@+id/buttonPost"
