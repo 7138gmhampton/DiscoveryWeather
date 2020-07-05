@@ -13,6 +13,7 @@ import androidx.fragment.app.DialogFragment;
 import java.util.HashMap;
 import java.util.Objects;
 
+@SuppressWarnings("WeakerAccess")
 public class ConditionFragment extends DialogFragment
 {
     private ConditionFragmentListener listener_;
@@ -35,7 +36,7 @@ public class ConditionFragment extends DialogFragment
                 @Override
                 public void onClick(DialogInterface dialog, int which)
                 {
-                    listener_.onClickCondition(ConditionFragment.this, which);
+                    listener_.onClickCondition(which);
                 }
             });
 
@@ -58,7 +59,7 @@ public class ConditionFragment extends DialogFragment
 
     public interface ConditionFragmentListener
     {
-        void onClickCondition(DialogFragment dialog, int index);
+        void onClickCondition(int index);
     }
 
     private ArrayAdapter prepareAdapter(HashMap<Integer,String> conditions)

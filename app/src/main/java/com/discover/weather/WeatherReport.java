@@ -77,7 +77,7 @@ public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeL
     }
 
     @Override
-    public void onClickCondition(DialogFragment dialog, int index)
+    public void onClickCondition(int index)
     {
         selected_condition_ = index;
 
