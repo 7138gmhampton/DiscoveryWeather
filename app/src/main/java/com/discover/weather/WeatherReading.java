@@ -9,7 +9,6 @@ public class WeatherReading implements Parcelable
 {
     private Float temperature_in_celsius;
     private Float pressure_in_hectopascals;
-//    private static final int NO_DATA_POINTS = 1;
 
     public static final Parcelable.Creator<WeatherReading> CREATOR =
             new Parcelable.Creator<WeatherReading>()
@@ -35,8 +34,6 @@ public class WeatherReading implements Parcelable
 
     private WeatherReading(Parcel in)
     {
-//        String[] data = new String[NO_DATA_POINTS];
-//        in.readStringArray(data);
         ClassLoader class_loader = WeatherReading.class.getClassLoader();
 
         this.temperature_in_celsius = (Float)in.readValue(class_loader);
@@ -52,7 +49,6 @@ public class WeatherReading implements Parcelable
     @Override
     public void writeToParcel(Parcel out, int flags)
     {
-//        out.writeFloat(temperature_in_celsius);
         out.writeValue(temperature_in_celsius);
         out.writeValue(pressure_in_hectopascals);
     }
