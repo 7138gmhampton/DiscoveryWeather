@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
@@ -131,5 +132,19 @@ public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeL
         condition_dialog.setArguments(condition_options_bundle);
 
         condition_dialog.show(getSupportFragmentManager(), "conditions");
+    }
+
+    private void submitReadingForConfirmation()
+    {
+        EditText temp_field = findViewById(R.id.editTemp);
+        Float temperature;
+        if (temp_field.getText().toString().trim().length() < 1) temperature = null;
+        else temperature = Float.parseFloat(temp_field.getText().toString());
+        WeatherReading reading = new WeatherReading(temperature);
+
+        Intent start_confirmation = new Intent(getApplicationContext(), ConfirmAndTag.class);
+        start_confirmation.putExtra("reading", reading);
+
+        startActivity(start_confirmation);
     }
 }
