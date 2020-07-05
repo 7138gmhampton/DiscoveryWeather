@@ -36,6 +36,9 @@ public class ConfirmAndTag extends AppCompatActivity implements OnMapReadyCallba
         if (reading.getTemperature() == null)
             Log.d("pass", "Temp unset");
         else Log.d("pass", "The temp is: " + reading.getTemperature());
+        if (reading.getPressure() == null)
+            Log.d("pass", "Pressure unset");
+        else Log.d("pass", "The pressure is: " + reading.getPressure());
     }
 
     @Override

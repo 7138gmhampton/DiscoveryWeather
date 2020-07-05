@@ -140,11 +140,20 @@ public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeL
         Float temperature;
         if (temp_field.getText().toString().trim().length() < 1) temperature = null;
         else temperature = Float.parseFloat(temp_field.getText().toString());
-        WeatherReading reading = new WeatherReading(temperature);
+//        WeatherReading reading = new WeatherReading(temperature);
+        WeatherReading reading = new WeatherReading(
+                setNumericMetric((EditText)findViewById(R.id.editTemp)),
+                setNumericMetric((EditText)findViewById(R.id.editPressure)));
 
         Intent start_confirmation = new Intent(getApplicationContext(), ConfirmAndTag.class);
         start_confirmation.putExtra("reading", reading);
 
         startActivity(start_confirmation);
+    }
+
+    private Float setNumericMetric(EditText source_field)
+    {
+        if (source_field.getText().toString().trim().length() < 1) return null;
+        else return Float.parseFloat(source_field.getText().toString());
     }
 }
