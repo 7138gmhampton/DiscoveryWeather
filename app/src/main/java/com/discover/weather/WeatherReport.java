@@ -1,6 +1,7 @@
 package com.discover.weather;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -35,6 +36,7 @@ public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeL
 
         ((SeekBar)findViewById(R.id.seekWind)).setOnSeekBarChangeListener(this);
         findViewById(R.id.textConditionSelected).setOnClickListener(this);
+        findViewById(R.id.btnConfirm).setOnClickListener(this);
         populateConditionOptions();
 
         selected_condition_ = -1;
@@ -66,7 +68,9 @@ public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeL
     public void onClick(View view)
     {
         switch (view.getId()) {
-            case R.id.textConditionSelected: showConditionDialog();
+            case R.id.textConditionSelected: showConditionDialog(); break;
+            case R.id.btnConfirm:
+                startActivity(new Intent(getApplicationContext(), ConfirmAndTag.class));
         }
     }
 
