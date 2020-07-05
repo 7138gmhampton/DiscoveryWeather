@@ -1,5 +1,6 @@
 package com.discover.weather;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -45,7 +46,7 @@ public class ConfirmAndTag extends AppCompatActivity implements OnMapReadyCallba
     }
 
     @Override
-    public void onSaveInstanceState(Bundle out_state)
+    public void onSaveInstanceState(@NonNull Bundle out_state)
     {
         super.onSaveInstanceState(out_state);
 

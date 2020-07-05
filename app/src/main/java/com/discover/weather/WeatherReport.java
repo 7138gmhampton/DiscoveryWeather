@@ -22,8 +22,6 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.util.HashMap;
 
 public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeListener,
@@ -56,7 +54,7 @@ public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeL
     }
 
     @Override
-    public void onProgressChanged(@NotNull SeekBar seekBar, int progress, boolean fromUser)
+    public void onProgressChanged(@NonNull SeekBar seekBar, int progress, boolean fromUser)
     {
         if (seekBar.getId() == R.id.seekWind) updateWindDirectionDisplay();
     }
@@ -68,7 +66,7 @@ public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeL
     public void onStopTrackingTouch(SeekBar seekBar) {}
 
     @Override
-    public void onClick(@NotNull View view)
+    public void onClick(@NonNull View view)
     {
         switch (view.getId()) {
             case R.id.textConditionSelected: showConditionDialog(); break;
@@ -148,7 +146,7 @@ public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeL
     }
 
     @Nullable
-    private Float setNumericMetric(@NotNull EditText source_field)
+    private Float setNumericMetric(@NonNull EditText source_field)
     {
         if (source_field.getText().toString().trim().length() < 1) return null;
         else return Float.parseFloat(source_field.getText().toString());
