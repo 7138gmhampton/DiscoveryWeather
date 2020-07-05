@@ -73,7 +73,6 @@ public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeL
         switch (view.getId()) {
             case R.id.textConditionSelected: showConditionDialog(); break;
             case R.id.btnConfirm: submitReadingForConfirmation();
-//                startActivity(new Intent(getApplicationContext(), ConfirmAndTag.class));
         }
     }
 
@@ -102,6 +101,7 @@ public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeL
     }
 
     @SuppressLint("UseSparseArrays")
+    @SuppressWarnings("ConstantConditions")
     private void populateConditionOptions()
     {
         overall_condition_options_ = new HashMap<>();
@@ -114,7 +114,6 @@ public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeL
              public void onComplete(@NonNull Task<QuerySnapshot> task)
              {
                  if (task.isSuccessful())
-                     //noinspection ConstantConditions
                      for (QueryDocumentSnapshot document : task.getResult()) {
                          overall_condition_options_.put(Integer.parseInt(document.getId()),
                                  document.getString("display"));
@@ -138,11 +137,6 @@ public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeL
 
     private void submitReadingForConfirmation()
     {
-//        EditText temp_field = findViewById(R.id.editTemp);
-//        Float temperature;
-//        if (temp_field.getText().toString().trim().length() < 1) temperature = null;
-//        else temperature = Float.parseFloat(temp_field.getText().toString());
-//        WeatherReading reading = new WeatherReading(temperature);
         WeatherReading reading = new WeatherReading(
                 setNumericMetric((EditText)findViewById(R.id.editTemp)),
                 setNumericMetric((EditText)findViewById(R.id.editPressure)));
