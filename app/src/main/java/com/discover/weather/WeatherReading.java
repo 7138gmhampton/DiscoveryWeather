@@ -5,7 +5,7 @@ import android.os.Parcelable;
 
 public class WeatherReading implements Parcelable
 {
-    private float temperature_in_celsius;
+    private Float temperature_in_celsius;
     private static final int NO_DATA_POINTS = 1;
 
     private static final Parcelable.Creator<WeatherReading> CREATOR =
@@ -32,7 +32,7 @@ public class WeatherReading implements Parcelable
 //        String[] data = new String[NO_DATA_POINTS];
 //        in.readStringArray(data);
 
-        this.temperature_in_celsius = in.readFloat();
+        this.temperature_in_celsius = (Float)in.readValue(null);
     }
 
     public float getTemperature() { return temperature_in_celsius; }
@@ -43,6 +43,7 @@ public class WeatherReading implements Parcelable
     @Override
     public void writeToParcel(Parcel out, int flags)
     {
-        out.writeFloat(temperature_in_celsius);
+//        out.writeFloat(temperature_in_celsius);
+        out.writeValue(temperature_in_celsius);
     }
 }
