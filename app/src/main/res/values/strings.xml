@@ -26,4 +26,5 @@
         <item name="condition_rainy">Rainy</item>
         <item name="condition_cloudy">Cloudy</item>
     </string-array>
+    <string name="title_activity_maps">Map</string>
 </resources>
