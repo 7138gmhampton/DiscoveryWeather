@@ -12,6 +12,7 @@ import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 
@@ -20,6 +21,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
 
@@ -53,7 +56,7 @@ public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeL
     }
 
     @Override
-    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser)
+    public void onProgressChanged(@NotNull SeekBar seekBar, int progress, boolean fromUser)
     {
         if (seekBar.getId() == R.id.seekWind) updateWindDirectionDisplay();
     }
@@ -65,7 +68,7 @@ public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeL
     public void onStopTrackingTouch(SeekBar seekBar) {}
 
     @Override
-    public void onClick(View view)
+    public void onClick(@NotNull View view)
     {
         switch (view.getId()) {
             case R.id.textConditionSelected: showConditionDialog(); break;
@@ -135,10 +138,10 @@ public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeL
 
     private void submitReadingForConfirmation()
     {
-        EditText temp_field = findViewById(R.id.editTemp);
-        Float temperature;
-        if (temp_field.getText().toString().trim().length() < 1) temperature = null;
-        else temperature = Float.parseFloat(temp_field.getText().toString());
+//        EditText temp_field = findViewById(R.id.editTemp);
+//        Float temperature;
+//        if (temp_field.getText().toString().trim().length() < 1) temperature = null;
+//        else temperature = Float.parseFloat(temp_field.getText().toString());
 //        WeatherReading reading = new WeatherReading(temperature);
         WeatherReading reading = new WeatherReading(
                 setNumericMetric((EditText)findViewById(R.id.editTemp)),
@@ -150,7 +153,8 @@ public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeL
         startActivity(start_confirmation);
     }
 
-    private Float setNumericMetric(EditText source_field)
+    @Nullable
+    private Float setNumericMetric(@NotNull EditText source_field)
     {
         if (source_field.getText().toString().trim().length() < 1) return null;
         else return Float.parseFloat(source_field.getText().toString());
