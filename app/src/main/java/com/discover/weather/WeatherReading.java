@@ -3,6 +3,8 @@ package com.discover.weather;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import javax.annotation.Nullable;
+
 public class WeatherReading implements Parcelable
 {
     private Float temperature_in_celsius;
@@ -22,7 +24,7 @@ public class WeatherReading implements Parcelable
                 }
             };
 
-    public WeatherReading(Float temperature_in_celsius)
+    public WeatherReading(@Nullable Float temperature_in_celsius)
     {
         this.temperature_in_celsius = temperature_in_celsius;
     }
@@ -35,6 +37,7 @@ public class WeatherReading implements Parcelable
         this.temperature_in_celsius = (Float)in.readValue(null);
     }
 
+    @Nullable
     public Float getTemperature() { return temperature_in_celsius; }
 
     @Override
