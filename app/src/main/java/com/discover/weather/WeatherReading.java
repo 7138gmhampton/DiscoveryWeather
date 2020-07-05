@@ -37,9 +37,10 @@ public class WeatherReading implements Parcelable
     {
 //        String[] data = new String[NO_DATA_POINTS];
 //        in.readStringArray(data);
+        ClassLoader class_loader = WeatherReading.class.getClassLoader();
 
-        this.temperature_in_celsius = (Float)in.readValue(null);
-        this.pressure_in_hectopascals = (Float)in.readValue((null));
+        this.temperature_in_celsius = (Float)in.readValue(class_loader);
+        this.pressure_in_hectopascals = (Float)in.readValue(class_loader);
     }
 
     @Nullable Float getTemperature() { return temperature_in_celsius; }
