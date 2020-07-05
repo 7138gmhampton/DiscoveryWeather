@@ -15,6 +15,7 @@ public class ConfirmAndTag extends AppCompatActivity implements OnMapReadyCallba
 {
     private MapView map_view;
     private GoogleMap map;
+    private WeatherReading reading;
 
     private static final String MAP_VIEW_BUNDLE_KEY = "MAPVIEWBUNDLEKEY";
 
@@ -31,8 +32,9 @@ public class ConfirmAndTag extends AppCompatActivity implements OnMapReadyCallba
         map_view = findViewById(R.id.mapView);
         map_view.onCreate(map_view_bundle);
         map_view.getMapAsync(this);
+        reading = getIntent().getExtras().getParcelable(("reading"));
         // Log check the parcellable transfer
-        WeatherReading reading = (WeatherReading)getIntent().getExtras().getParcelable("reading");
+//        WeatherReading reading = (WeatherReading)getIntent().getExtras().getParcelable("reading");
         if (reading.getTemperature() == null)
             Log.d("pass", "Temp unset");
         else Log.d("pass", "The temp is: " + reading.getTemperature());
