@@ -22,7 +22,7 @@ public class WeatherReading implements Parcelable
                 }
             };
 
-    public WeatherReading(float temperature_in_celsius)
+    public WeatherReading(Float temperature_in_celsius)
     {
         this.temperature_in_celsius = temperature_in_celsius;
     }
