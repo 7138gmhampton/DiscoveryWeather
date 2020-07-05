@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">DiscoveryWeather</string>
     <string name="btn_post_text">Provide a Weather Recording</string>
+    <string name="btn_submit">Submit</string>
+    <string name="btn_confirm">Confirm</string>
 
     <string name="label_temp">Temperature</string>
     <string name="label_temp_units">\u2103</string>
