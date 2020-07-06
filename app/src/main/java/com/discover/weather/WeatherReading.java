@@ -10,8 +10,8 @@ public class WeatherReading implements Parcelable
     private final Float temperature_in_celsius;
     private final Float pressure_in_hectopascals;
     private final Float wind_speed_in_metres_per_sec;
-    private final Float rainfall_in_millimetres;
-    private final Float snowfall_in_millimetres;
+    private final Integer rainfall_in_millimetres;
+    private final Integer snowfall_in_millimetres;
 
     public static final Parcelable.Creator<WeatherReading> CREATOR =
             new Parcelable.Creator<WeatherReading>()
@@ -31,8 +31,8 @@ public class WeatherReading implements Parcelable
             @Nullable Float temperature_in_celsius,
             @Nullable Float pressure_in_hectopascals,
             @Nullable Float wind_speed_in_metres_per_sec,
-            @Nullable Float rainfall_in_millimetres,
-            @Nullable Float snowfall_in_millimetres)
+            @Nullable Integer rainfall_in_millimetres,
+            @Nullable Integer snowfall_in_millimetres)
     {
         this.temperature_in_celsius = temperature_in_celsius;
         this.pressure_in_hectopascals = pressure_in_hectopascals;
@@ -48,15 +48,15 @@ public class WeatherReading implements Parcelable
         this.temperature_in_celsius = (Float)in.readValue(class_loader);
         this.pressure_in_hectopascals = (Float)in.readValue(class_loader);
         this.wind_speed_in_metres_per_sec = (Float)in.readValue(class_loader);
-        this.rainfall_in_millimetres = (Float)in.readValue(class_loader);
-        this.snowfall_in_millimetres = (Float)in.readValue(class_loader);
+        this.rainfall_in_millimetres = (Integer) in.readValue(class_loader);
+        this.snowfall_in_millimetres = (Integer) in.readValue(class_loader);
     }
 
     @Nullable Float getTemperature() { return temperature_in_celsius; }
     @Nullable Float getPressure() { return pressure_in_hectopascals; }
     @Nullable Float getWindSpeed() { return wind_speed_in_metres_per_sec; }
-    @Nullable Float getRainfall() { return  rainfall_in_millimetres; }
-    @Nullable Float getSnowfall() { return snowfall_in_millimetres; }
+    @Nullable Integer getRainfall() { return  rainfall_in_millimetres; }
+    @Nullable Integer getSnowfall() { return snowfall_in_millimetres; }
 
     @Override
     public int describeContents() { return 0; }
