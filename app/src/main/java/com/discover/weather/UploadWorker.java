@@ -23,35 +23,12 @@ public class UploadWorker extends Worker
         data_points = workerParams.getInputData().getKeyValueMap();
     }
 
-//    @NonNull
-//    @Override
-//    public ListenableFuture<Result> startWork()
-//    {
-//        return CallbackToFutureAdapter.getFuture(completer -> {
-//            UploadCallback callback = new UploadCallback()
-//            {
-//                @Override
-//                public void onAchieve()
-//                {
-//
-//                }
-//
-//                @Override
-//                public void onError()
-//                {
-//
-//                }
-//            }
-//        })
-//    }
-
     @NonNull
     @Override
     public Result doWork()
     {
         FirebaseFirestore database = FirebaseFirestore.getInstance();
 
-        //Map<String,Object> data_points =
         database.collection("reading").add(data_points);
 
         return Result.success();
