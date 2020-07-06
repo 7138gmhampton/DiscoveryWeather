@@ -136,8 +136,9 @@ public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeL
     private void submitReadingForConfirmation()
     {
         WeatherReading reading = new WeatherReading(
-                setNumericMetric((EditText)findViewById(R.id.editTemp)),
-                setNumericMetric((EditText)findViewById(R.id.editPressure)));
+                setNumericMetric(findViewById(R.id.editTemp)),
+                setNumericMetric(findViewById(R.id.editPressure)),
+                setNumericMetric(findViewById(R.id.editSpeed)));
 
         Intent start_confirmation = new Intent(getApplicationContext(), ConfirmAndTag.class);
         start_confirmation.putExtra("reading", reading);
@@ -146,9 +147,11 @@ public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeL
     }
 
     @Nullable
-    private Float setNumericMetric(@NonNull EditText source_field)
+    private Float setNumericMetric(@NonNull View source_field)
     {
-        if (source_field.getText().toString().trim().length() < 1) return null;
-        else return Float.parseFloat(source_field.getText().toString());
+        EditText source_text = (EditText)source_field;
+
+        if (source_text.getText().toString().trim().length() < 1) return null;
+        else return Float.parseFloat(source_text.getText().toString());
     }
 }
