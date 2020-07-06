@@ -88,7 +88,7 @@ public class WeatherReading implements Parcelable
         out.writeInt(overall_condition);
     }
 
-    public HashMap<String,Object> prepareForUpload(LatLng lat_long)
+    HashMap<String,Object> prepareForUpload(LatLng lat_long)
     {
         HashMap<String,Object> data = new HashMap<>();
 
