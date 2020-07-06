@@ -1,5 +1,11 @@
 package com.discover.weather;
 
+import android.content.pm.PackageManager;
+import android.location.Location;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -9,19 +15,11 @@ import androidx.work.OneTimeWorkRequest;
 import androidx.work.WorkManager;
 import androidx.work.WorkRequest;
 
-import android.Manifest;
-import android.content.pm.PackageManager;
-import android.location.Location;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.Map;
 
@@ -53,7 +51,6 @@ public class ConfirmAndTag extends AppCompatActivity implements OnMapReadyCallba
         map_view.onCreate(map_view_bundle);
         map_view.getMapAsync(this);
         reading = getIntent().getExtras().getParcelable(("reading"));
-//        WeatherReading reading = (WeatherReading)getIntent().getExtras().getParcelable("reading");
         findViewById(R.id.btnConfirm).setOnClickListener(this);
 
         if (reading.getTemperature() == null)
@@ -138,7 +135,6 @@ public class ConfirmAndTag extends AppCompatActivity implements OnMapReadyCallba
         this.map.setMinZoomPreference(12);
         this.map.moveCamera(CameraUpdateFactory.newLatLng(
                 new LatLng(56.463266, -2.974478)));
-//        this.map.setMyLocationEnabled(true);
         if (ContextCompat.checkSelfPermission(this,
                 ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED)
             this.map.setMyLocationEnabled(true);
@@ -172,10 +168,6 @@ public class ConfirmAndTag extends AppCompatActivity implements OnMapReadyCallba
 
     private void submitReading()
     {
-//        FirebaseFirestore database = FirebaseFirestore.getInstance();
-//
-//        database.collection("reading").add(reading.prepareForUpload(
-//                map.getCameraPosition().target));
         Data data_points = new Data.Builder()
             .putAll(reading.prepareForUpload(map.getCameraPosition().target))
             .build();
