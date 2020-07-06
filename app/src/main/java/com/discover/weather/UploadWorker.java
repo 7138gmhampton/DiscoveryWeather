@@ -3,10 +3,13 @@ package com.discover.weather;
 import android.content.Context;
 
 import androidx.annotation.NonNull;
+import androidx.work.ListenableWorker;
 import androidx.work.Worker;
 import androidx.work.WorkerParameters;
 
-class UploadWorker extends Worker
+import com.google.common.util.concurrent.ListenableFuture;
+
+class UploadWorker extends ListenableWorker
 {
     public UploadWorker(
         @NonNull Context context,
@@ -17,8 +20,15 @@ class UploadWorker extends Worker
 
     @NonNull
     @Override
-    public Result doWork()
+    public ListenableFuture<Result> startWork()
     {
-        return Result.success();
+        return null;
     }
+
+//    @NonNull
+//    @Override
+//    public Result doWork()
+//    {
+//        return Result.success();
+//    }
 }
