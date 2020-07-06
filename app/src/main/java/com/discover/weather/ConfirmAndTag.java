@@ -17,6 +17,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.Map;
 
@@ -152,6 +153,7 @@ public class ConfirmAndTag extends AppCompatActivity implements OnMapReadyCallba
                 for (Map.Entry<String,Object> data_point :
                         reading.prepareForUpload(map_centre).entrySet())
                     Log.d("serialise", data_point.getKey() + " -> " + data_point.getValue());
+                submitReading();
         }
     }
 
@@ -163,4 +165,12 @@ public class ConfirmAndTag extends AppCompatActivity implements OnMapReadyCallba
 
     @Override
     public void onMyLocationClick(@NonNull Location location) { }
+
+    private void submitReading()
+    {
+        FirebaseFirestore database = FirebaseFirestore.getInstance();
+
+        database.collection("reading").add(reading.prepareForUpload(
+                map.getCameraPosition().target));
+    }
 }
