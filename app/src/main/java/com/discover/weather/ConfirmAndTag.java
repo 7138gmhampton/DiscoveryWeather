@@ -22,7 +22,6 @@ import com.google.android.gms.maps.model.LatLng;
 
 import static android.Manifest.permission.ACCESS_FINE_LOCATION;
 
-@SuppressWarnings("FieldCanBeLocal")
 public class ConfirmAndTag extends AppCompatActivity implements OnMapReadyCallback,
         View.OnClickListener, ActivityCompat.OnRequestPermissionsResultCallback,
         GoogleMap.OnMyLocationButtonClickListener, GoogleMap.OnMyLocationClickListener
