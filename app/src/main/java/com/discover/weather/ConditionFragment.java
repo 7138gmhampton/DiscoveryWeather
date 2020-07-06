@@ -13,6 +13,7 @@ import androidx.fragment.app.DialogFragment;
 import java.util.HashMap;
 import java.util.Objects;
 
+@SuppressWarnings("WeakerAccess")
 public class ConditionFragment extends DialogFragment
 {
     private ConditionFragmentListener listener_;
