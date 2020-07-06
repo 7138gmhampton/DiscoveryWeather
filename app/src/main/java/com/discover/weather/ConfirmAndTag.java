@@ -52,24 +52,6 @@ public class ConfirmAndTag extends AppCompatActivity implements OnMapReadyCallba
         map_view.getMapAsync(this);
         reading = getIntent().getExtras().getParcelable(("reading"));
         findViewById(R.id.btnConfirm).setOnClickListener(this);
-
-        if (reading.getTemperature() == null)
-            Log.d("passing", "Temp unset");
-        else Log.d("passing", "The temp is: " + reading.getTemperature());
-        if (reading.getPressure() == null)
-            Log.d("passing", "Pressure unset");
-        else Log.d("passing", "The pressure is: " + reading.getPressure());
-        if (reading.getWindSpeed() == null)
-            Log.d("passing", "Wind speed unset");
-        else Log.d("passing", "The wind speed is: " + reading.getWindSpeed());
-        if (reading.getRainfall() == null)
-            Log.d("passing", "Rainfall unset");
-        else Log.d("passing", "The rainfall is: " + reading.getRainfall());
-        if (reading.getSnowfall() == null)
-            Log.d("passing", "Snowfall unset");
-        else Log.d("passing", "The snowfall is: " + reading.getSnowfall());
-        Log.d("passing", "The wind dir is: " + reading.getWindDirection());
-        Log.d("passing", "The condition code is: " + reading.getConditionCode());
     }
 
     @Override
@@ -146,14 +128,7 @@ public class ConfirmAndTag extends AppCompatActivity implements OnMapReadyCallba
     public void onClick(View view)
     {
         switch (view.getId()) {
-            case R.id.btnConfirm:
-                LatLng map_centre = map.getCameraPosition().target;
-                Log.d("mapping", "Lat: " + map_centre.latitude);
-                Log.d("mapping", "Lng: " + map_centre.longitude);
-                for (Map.Entry<String,Object> data_point :
-                        reading.prepareForUpload(map_centre).entrySet())
-                    Log.d("serialise", data_point.getKey() + " -> " + data_point.getValue());
-                submitReading();
+            case R.id.btnConfirm: submitReading();
         }
     }
 
