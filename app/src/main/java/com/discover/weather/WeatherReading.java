@@ -41,8 +41,8 @@ public class WeatherReading implements Parcelable
             @Nullable Float wind_speed_in_metres_per_sec,
             @Nullable Integer rainfall_in_millimetres,
             @Nullable Integer snowfall_in_millimetres,
-            @NonNull int wind_direction_in_degrees,
-            @NonNull int overall_condition)
+            int wind_direction_in_degrees,
+            int overall_condition)
     {
         this.temperature_in_celsius = temperature_in_celsius;
         this.pressure_in_hectopascals = pressure_in_hectopascals;
@@ -71,8 +71,8 @@ public class WeatherReading implements Parcelable
     @Nullable Float getWindSpeed() { return wind_speed_in_metres_per_sec; }
     @Nullable Integer getRainfall() { return  rainfall_in_millimetres; }
     @Nullable Integer getSnowfall() { return snowfall_in_millimetres; }
-    @NonNull int getWindDirection() { return wind_direction_in_degrees; }
-    @NonNull int getConditionCode() { return overall_condition; }
+    int getWindDirection() { return wind_direction_in_degrees; }
+    int getConditionCode() { return overall_condition; }
 
     @Override
     public int describeContents() { return 0; }
