@@ -10,7 +10,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.Map;
 
-class UploadWorker extends Worker
+public class UploadWorker extends Worker
 {
     private Map<String,Object> data_points;
 
