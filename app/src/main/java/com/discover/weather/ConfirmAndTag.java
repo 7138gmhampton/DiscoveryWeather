@@ -7,6 +7,7 @@ import androidx.core.content.ContextCompat;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
+import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -21,7 +22,8 @@ import static android.Manifest.permission.ACCESS_FINE_LOCATION;
 
 @SuppressWarnings("FieldCanBeLocal")
 public class ConfirmAndTag extends AppCompatActivity implements OnMapReadyCallback,
-        View.OnClickListener, ActivityCompat.OnRequestPermissionsResultCallback
+        View.OnClickListener, ActivityCompat.OnRequestPermissionsResultCallback,
+        GoogleMap.OnMyLocationButtonClickListener, GoogleMap.OnMyLocationClickListener
 {
     private MapView map_view;
     private GoogleMap map;
@@ -146,5 +148,17 @@ public class ConfirmAndTag extends AppCompatActivity implements OnMapReadyCallba
                 Log.d("mapping", "Lat: " + map_centre.latitude);
                 Log.d("mapping", "Lng: " + map_centre.longitude);
         }
+    }
+
+    @Override
+    public boolean onMyLocationButtonClick()
+    {
+        return false;
+    }
+
+    @Override
+    public void onMyLocationClick(@NonNull Location location)
+    {
+
     }
 }
