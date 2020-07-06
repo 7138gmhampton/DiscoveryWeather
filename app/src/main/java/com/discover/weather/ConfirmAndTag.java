@@ -3,7 +3,6 @@ package com.discover.weather;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 
 import androidx.annotation.NonNull;
@@ -20,8 +19,6 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
-
-import java.util.Map;
 
 import static android.Manifest.permission.ACCESS_FINE_LOCATION;
 
@@ -121,6 +118,7 @@ public class ConfirmAndTag extends AppCompatActivity implements OnMapReadyCallba
     }
 
     @Override
+    @SuppressWarnings("SwitchStatementWithTooFewBranches")
     public void onClick(View view)
     {
         switch (view.getId()) {
