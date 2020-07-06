@@ -13,7 +13,7 @@ import java.util.Map;
 @SuppressWarnings("WeakerAccess")
 public class UploadWorker extends Worker
 {
-    private Map<String,Object> data_points;
+    private final Map<String,Object> data_points;
 
     public UploadWorker(
         @NonNull Context context,
