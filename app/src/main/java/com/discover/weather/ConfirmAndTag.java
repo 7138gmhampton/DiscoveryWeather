@@ -4,6 +4,10 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.work.Data;
+import androidx.work.OneTimeWorkRequest;
+import androidx.work.WorkManager;
+import androidx.work.WorkRequest;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
@@ -168,9 +172,18 @@ public class ConfirmAndTag extends AppCompatActivity implements OnMapReadyCallba
 
     private void submitReading()
     {
-        FirebaseFirestore database = FirebaseFirestore.getInstance();
+//        FirebaseFirestore database = FirebaseFirestore.getInstance();
+//
+//        database.collection("reading").add(reading.prepareForUpload(
+//                map.getCameraPosition().target));
+        Data data_points = new Data.Builder()
+            .putAll(reading.prepareForUpload(map.getCameraPosition().target))
+            .build();
 
-        database.collection("reading").add(reading.prepareForUpload(
-                map.getCameraPosition().target));
+        WorkRequest upload_request = new OneTimeWorkRequest.Builder(UploadWorker.class)
+            .setInputData(data_points)
+            .build();
+
+        WorkManager.getInstance(getApplicationContext()).enqueue(upload_request);
     }
 }
