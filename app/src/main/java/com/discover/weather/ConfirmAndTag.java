@@ -38,14 +38,17 @@ public class ConfirmAndTag extends AppCompatActivity implements OnMapReadyCallba
         reading = getIntent().getExtras().getParcelable(("reading"));
 //        WeatherReading reading = (WeatherReading)getIntent().getExtras().getParcelable("reading");
         if (reading.getTemperature() == null)
-            Log.d("pass", "Temp unset");
-        else Log.d("pass", "The temp is: " + reading.getTemperature());
+            Log.d("passing", "Temp unset");
+        else Log.d("passing", "The temp is: " + reading.getTemperature());
         if (reading.getPressure() == null)
-            Log.d("pass", "Pressure unset");
-        else Log.d("pass", "The pressure is: " + reading.getPressure());
+            Log.d("passing", "Pressure unset");
+        else Log.d("passing", "The pressure is: " + reading.getPressure());
         if (reading.getWindSpeed() == null)
-            Log.d("pass", "Wind speed unset");
-        else Log.d("pass", "The wind speed is: " + reading.getWindSpeed());
+            Log.d("passing", "Wind speed unset");
+        else Log.d("passing", "The wind speed is: " + reading.getWindSpeed());
+        if (reading.getRainfall() == null)
+            Log.d("passing", "Rainfall unset");
+        else Log.d("passing", "The rainfall is: " + reading.getRainfall());
     }
 
     @Override

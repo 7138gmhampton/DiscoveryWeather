@@ -138,7 +138,8 @@ public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeL
         WeatherReading reading = new WeatherReading(
                 setNumericMetric(findViewById(R.id.editTemp)),
                 setNumericMetric(findViewById(R.id.editPressure)),
-                setNumericMetric(findViewById(R.id.editSpeed)));
+                setNumericMetric(findViewById(R.id.editSpeed)),
+                setNumericMetric(findViewById(R.id.editRain)));
 
         Intent start_confirmation = new Intent(getApplicationContext(), ConfirmAndTag.class);
         start_confirmation.putExtra("reading", reading);
