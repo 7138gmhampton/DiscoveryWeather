@@ -3,6 +3,9 @@ package com.discover.weather;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import androidx.annotation.NonNull;
+
+import javax.annotation.Nonnegative;
 import javax.annotation.Nullable;
 
 public class WeatherReading implements Parcelable
@@ -12,6 +15,7 @@ public class WeatherReading implements Parcelable
     private final Float wind_speed_in_metres_per_sec;
     private final Integer rainfall_in_millimetres;
     private final Integer snowfall_in_millimetres;
+    private final int wind_direction_in_degrees;
 
     public static final Parcelable.Creator<WeatherReading> CREATOR =
             new Parcelable.Creator<WeatherReading>()
@@ -32,13 +36,15 @@ public class WeatherReading implements Parcelable
             @Nullable Float pressure_in_hectopascals,
             @Nullable Float wind_speed_in_metres_per_sec,
             @Nullable Integer rainfall_in_millimetres,
-            @Nullable Integer snowfall_in_millimetres)
+            @Nullable Integer snowfall_in_millimetres,
+            @NonNull int wind_direction_in_degrees)
     {
         this.temperature_in_celsius = temperature_in_celsius;
         this.pressure_in_hectopascals = pressure_in_hectopascals;
         this.wind_speed_in_metres_per_sec = wind_speed_in_metres_per_sec;
         this.rainfall_in_millimetres = rainfall_in_millimetres;
         this.snowfall_in_millimetres = snowfall_in_millimetres;
+        this.wind_direction_in_degrees = wind_direction_in_degrees;
     }
 
     private WeatherReading(Parcel in)
@@ -48,8 +54,9 @@ public class WeatherReading implements Parcelable
         this.temperature_in_celsius = (Float)in.readValue(class_loader);
         this.pressure_in_hectopascals = (Float)in.readValue(class_loader);
         this.wind_speed_in_metres_per_sec = (Float)in.readValue(class_loader);
-        this.rainfall_in_millimetres = (Integer) in.readValue(class_loader);
-        this.snowfall_in_millimetres = (Integer) in.readValue(class_loader);
+        this.rainfall_in_millimetres = (Integer)in.readValue(class_loader);
+        this.snowfall_in_millimetres = (Integer)in.readValue(class_loader);
+        this.wind_direction_in_degrees = (int)in.readInt();
     }
 
     @Nullable Float getTemperature() { return temperature_in_celsius; }
@@ -57,6 +64,7 @@ public class WeatherReading implements Parcelable
     @Nullable Float getWindSpeed() { return wind_speed_in_metres_per_sec; }
     @Nullable Integer getRainfall() { return  rainfall_in_millimetres; }
     @Nullable Integer getSnowfall() { return snowfall_in_millimetres; }
+    @NonNull int getWindDirection() { return wind_direction_in_degrees; }
 
     @Override
     public int describeContents() { return 0; }
@@ -69,5 +77,6 @@ public class WeatherReading implements Parcelable
         out.writeValue(wind_speed_in_metres_per_sec);
         out.writeValue(rainfall_in_millimetres);
         out.writeValue(snowfall_in_millimetres);
+        out.writeInt(wind_direction_in_degrees);
     }
 }
