@@ -5,7 +5,10 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import javax.annotation.Nonnegative;
+import com.google.android.gms.maps.model.LatLng;
+
+import java.util.HashMap;
+
 import javax.annotation.Nullable;
 
 public class WeatherReading implements Parcelable
@@ -84,5 +87,28 @@ public class WeatherReading implements Parcelable
         out.writeValue(snowfall_in_millimetres);
         out.writeInt(wind_direction_in_degrees);
         out.writeInt(overall_condition);
+    }
+
+    public HashMap<String,Object> prepareForUpload(LatLng lat_long)
+    {
+        HashMap<String,Object> data = new HashMap<>();
+
+        if (temperature_in_celsius != null)
+            data.put("temperature", temperature_in_celsius);
+        if (pressure_in_hectopascals != null)
+            data.put("pressure", pressure_in_hectopascals);
+        if (wind_speed_in_metres_per_sec != null)
+            data.put("wind_speed", wind_speed_in_metres_per_sec);
+        if (rainfall_in_millimetres != null)
+            data.put("rainfall", rainfall_in_millimetres);
+        if (snowfall_in_millimetres != null)
+            data.put("snowfall", snowfall_in_millimetres);
+        data.put("wind_direction", wind_direction_in_degrees);
+        data.put("condition", overall_condition);
+        data.put("latitude", lat_long.latitude);
+        data.put("longitude", lat_long.longitude);
+        data.put("timestamp", System.currentTimeMillis()/1000);
+
+        return data;
     }
 }

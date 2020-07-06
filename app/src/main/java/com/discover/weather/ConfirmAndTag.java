@@ -18,6 +18,8 @@ import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 
+import java.util.Map;
+
 import static android.Manifest.permission.ACCESS_FINE_LOCATION;
 
 @SuppressWarnings("FieldCanBeLocal")
@@ -147,6 +149,9 @@ public class ConfirmAndTag extends AppCompatActivity implements OnMapReadyCallba
                 LatLng map_centre = map.getCameraPosition().target;
                 Log.d("mapping", "Lat: " + map_centre.latitude);
                 Log.d("mapping", "Lng: " + map_centre.longitude);
+                for (Map.Entry<String,Object> data_point :
+                        reading.prepareForUpload(map_centre).entrySet())
+                    Log.d("serialise", data_point.getKey() + " -> " + data_point.getValue());
         }
     }
 
@@ -157,8 +162,5 @@ public class ConfirmAndTag extends AppCompatActivity implements OnMapReadyCallba
     }
 
     @Override
-    public void onMyLocationClick(@NonNull Location location)
-    {
-
-    }
+    public void onMyLocationClick(@NonNull Location location) { }
 }
