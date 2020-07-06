@@ -16,11 +16,11 @@ public class UploadWorker extends Worker
 
     public UploadWorker(
         @NonNull Context context,
-        @NonNull WorkerParameters workerParams)
+        @NonNull WorkerParameters worker_params)
     {
-        super(context,workerParams);
+        super(context,worker_params);
 
-        data_points = workerParams.getInputData().getKeyValueMap();
+        data_points = worker_params.getInputData().getKeyValueMap();
     }
 
     @NonNull
