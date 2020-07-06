@@ -10,6 +10,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.Map;
 
+@SuppressWarnings("WeakerAccess")
 public class UploadWorker extends Worker
 {
     private Map<String,Object> data_points;
