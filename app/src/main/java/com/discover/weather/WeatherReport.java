@@ -136,11 +136,11 @@ public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeL
     private void submitReadingForConfirmation()
     {
         WeatherReading reading = new WeatherReading(
-                setNumericMetric(findViewById(R.id.editTemp)),
-                setNumericMetric(findViewById(R.id.editPressure)),
-                setNumericMetric(findViewById(R.id.editSpeed)),
-                setNumericMetric(findViewById(R.id.editRain)),
-                setNumericMetric(findViewById(R.id.editSnow)));
+                setFloatMetric(findViewById(R.id.editTemp)),
+                setFloatMetric(findViewById(R.id.editPressure)),
+                setFloatMetric(findViewById(R.id.editSpeed)),
+                setIntegerMetric(findViewById(R.id.editRain)),
+                setIntegerMetric(findViewById(R.id.editSnow)));
 
         Intent start_confirmation = new Intent(getApplicationContext(), ConfirmAndTag.class);
         start_confirmation.putExtra("reading", reading);
@@ -149,11 +149,20 @@ public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeL
     }
 
     @Nullable
-    private Float setNumericMetric(@NonNull View source_field)
+    private Float setFloatMetric(@NonNull View source_field)
     {
-        EditText source_text = (EditText)source_field;
+        String source_text = ((EditText)source_field).getText().toString();
 
-        if (source_text.getText().toString().trim().length() < 1) return null;
-        else return Float.parseFloat(source_text.getText().toString());
+        if (source_text.trim().length() < 1) return null;
+        else return Float.parseFloat(source_text);
+    }
+
+    @Nullable
+    private Integer setIntegerMetric(@NonNull View source_field)
+    {
+        String source_text = ((EditText)source_field).getText().toString();
+
+        if (source_text.trim().length() < 1) return null;
+        else return Integer.parseInt(source_text);
     }
 }
