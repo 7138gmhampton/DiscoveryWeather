@@ -139,7 +139,8 @@ public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeL
                 setNumericMetric(findViewById(R.id.editTemp)),
                 setNumericMetric(findViewById(R.id.editPressure)),
                 setNumericMetric(findViewById(R.id.editSpeed)),
-                setNumericMetric(findViewById(R.id.editRain)));
+                setNumericMetric(findViewById(R.id.editRain)),
+                setNumericMetric(findViewById(R.id.editSnow)));
 
         Intent start_confirmation = new Intent(getApplicationContext(), ConfirmAndTag.class);
         start_confirmation.putExtra("reading", reading);

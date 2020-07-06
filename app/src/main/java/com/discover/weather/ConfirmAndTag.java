@@ -49,6 +49,9 @@ public class ConfirmAndTag extends AppCompatActivity implements OnMapReadyCallba
         if (reading.getRainfall() == null)
             Log.d("passing", "Rainfall unset");
         else Log.d("passing", "The rainfall is: " + reading.getRainfall());
+        if (reading.getSnowfall() == null)
+            Log.d("passing", "Snowfall unset");
+        else Log.d("passing", "The snowfall is: " + reading.getSnowfall());
     }
 
     @Override
