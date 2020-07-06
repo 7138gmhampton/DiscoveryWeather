@@ -16,6 +16,7 @@ public class WeatherReading implements Parcelable
     private final Integer rainfall_in_millimetres;
     private final Integer snowfall_in_millimetres;
     private final int wind_direction_in_degrees;
+    private final int overall_condition;
 
     public static final Parcelable.Creator<WeatherReading> CREATOR =
             new Parcelable.Creator<WeatherReading>()
@@ -37,7 +38,8 @@ public class WeatherReading implements Parcelable
             @Nullable Float wind_speed_in_metres_per_sec,
             @Nullable Integer rainfall_in_millimetres,
             @Nullable Integer snowfall_in_millimetres,
-            @NonNull int wind_direction_in_degrees)
+            @NonNull int wind_direction_in_degrees,
+            @NonNull int overall_condition)
     {
         this.temperature_in_celsius = temperature_in_celsius;
         this.pressure_in_hectopascals = pressure_in_hectopascals;
@@ -45,6 +47,7 @@ public class WeatherReading implements Parcelable
         this.rainfall_in_millimetres = rainfall_in_millimetres;
         this.snowfall_in_millimetres = snowfall_in_millimetres;
         this.wind_direction_in_degrees = wind_direction_in_degrees;
+        this.overall_condition = overall_condition;
     }
 
     private WeatherReading(Parcel in)
@@ -56,7 +59,8 @@ public class WeatherReading implements Parcelable
         this.wind_speed_in_metres_per_sec = (Float)in.readValue(class_loader);
         this.rainfall_in_millimetres = (Integer)in.readValue(class_loader);
         this.snowfall_in_millimetres = (Integer)in.readValue(class_loader);
-        this.wind_direction_in_degrees = (int)in.readInt();
+        this.wind_direction_in_degrees = in.readInt();
+        this.overall_condition = in.readInt();
     }
 
     @Nullable Float getTemperature() { return temperature_in_celsius; }
@@ -65,6 +69,7 @@ public class WeatherReading implements Parcelable
     @Nullable Integer getRainfall() { return  rainfall_in_millimetres; }
     @Nullable Integer getSnowfall() { return snowfall_in_millimetres; }
     @NonNull int getWindDirection() { return wind_direction_in_degrees; }
+    @NonNull int getConditionCode() { return overall_condition; }
 
     @Override
     public int describeContents() { return 0; }
@@ -78,5 +83,6 @@ public class WeatherReading implements Parcelable
         out.writeValue(rainfall_in_millimetres);
         out.writeValue(snowfall_in_millimetres);
         out.writeInt(wind_direction_in_degrees);
+        out.writeInt(overall_condition);
     }
 }
