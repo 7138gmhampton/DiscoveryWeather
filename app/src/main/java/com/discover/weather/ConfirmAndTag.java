@@ -2,9 +2,14 @@ package com.discover.weather;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -12,8 +17,11 @@ import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 
+import static android.Manifest.permission.ACCESS_FINE_LOCATION;
+
 @SuppressWarnings("FieldCanBeLocal")
-public class ConfirmAndTag extends AppCompatActivity implements OnMapReadyCallback
+public class ConfirmAndTag extends AppCompatActivity implements OnMapReadyCallback,
+        View.OnClickListener, ActivityCompat.OnRequestPermissionsResultCallback
 {
     private MapView map_view;
     private GoogleMap map;
@@ -37,6 +45,8 @@ public class ConfirmAndTag extends AppCompatActivity implements OnMapReadyCallba
         map_view.getMapAsync(this);
         reading = getIntent().getExtras().getParcelable(("reading"));
 //        WeatherReading reading = (WeatherReading)getIntent().getExtras().getParcelable("reading");
+        findViewById(R.id.btnConfirm).setOnClickListener(this);
+
         if (reading.getTemperature() == null)
             Log.d("passing", "Temp unset");
         else Log.d("passing", "The temp is: " + reading.getTemperature());
@@ -119,5 +129,22 @@ public class ConfirmAndTag extends AppCompatActivity implements OnMapReadyCallba
         this.map.setMinZoomPreference(12);
         this.map.moveCamera(CameraUpdateFactory.newLatLng(
                 new LatLng(56.463266, -2.974478)));
+//        this.map.setMyLocationEnabled(true);
+        if (ContextCompat.checkSelfPermission(this,
+                ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED)
+            this.map.setMyLocationEnabled(true);
+        else ActivityCompat.requestPermissions(this,
+                new String[]{ACCESS_FINE_LOCATION}, 200);
+    }
+
+    @Override
+    public void onClick(View view)
+    {
+        switch (view.getId()) {
+            case R.id.btnConfirm:
+                LatLng map_centre = map.getCameraPosition().target;
+                Log.d("mapping", "Lat: " + map_centre.latitude);
+                Log.d("mapping", "Lng: " + map_centre.longitude);
+        }
     }
 }
