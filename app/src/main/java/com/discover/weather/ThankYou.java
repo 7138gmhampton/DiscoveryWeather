@@ -6,7 +6,6 @@ import android.os.Bundle;
 
 public class ThankYou extends AppCompatActivity
 {
-
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
