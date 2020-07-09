@@ -2,6 +2,7 @@ package com.discover.weather;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
@@ -31,12 +32,14 @@ public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeL
 {
     private int selected_condition;
     private HashMap<Integer,String> overall_condition_options;
+    private ColorStateList default_colour;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_weather_report);
+        default_colour = ((TextView)findViewById(R.id.textConditions)).getTextColors();
 
         ((SeekBar)findViewById(R.id.seekWind)).setOnSeekBarChangeListener(this);
         findViewById(R.id.textConditionSelected).setOnClickListener(this);
@@ -97,7 +100,15 @@ public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeL
         TextView condition_display = findViewById(R.id.textConditionSelected);
 
         if (selected_condition < 0) condition_display.setText(R.string.placeholder_condition);
-        else condition_display.setText(overall_condition_options.get(selected_condition));
+        else {
+            condition_display.setText(overall_condition_options.get(selected_condition));
+            TextView condition_label = findViewById(R.id.textConditions);
+            condition_label.setTextColor(default_colour);
+            condition_label.setTypeface(null, Typeface.NORMAL);
+//            condition_display.setTextColor(default_colour);
+//            condition_display.setTypeface(condition_display.getTypeface(),
+//                Typeface.NORMAL);
+        }
     }
 
     @SuppressLint("UseSparseArrays")
@@ -183,6 +194,6 @@ public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeL
 
         TextView condition_label = findViewById(R.id.textConditions);
         condition_label.setTextColor(getResources().getColor(android.R.color.holo_red_light));
-        condition_label.setTypeface(condition_label.getTypeface(),Typeface.BOLD);
+        condition_label.setTypeface(null,Typeface.BOLD);
     }
 }
