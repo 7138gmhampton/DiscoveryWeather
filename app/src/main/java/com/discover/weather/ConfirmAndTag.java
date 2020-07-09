@@ -1,5 +1,6 @@
 package com.discover.weather;
 
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
@@ -154,5 +155,6 @@ public class ConfirmAndTag extends AppCompatActivity implements OnMapReadyCallba
             .build();
 
         WorkManager.getInstance(getApplicationContext()).enqueue(upload_request);
+        startActivity(new Intent(getApplicationContext(), ThankYou.class));
     }
 }
