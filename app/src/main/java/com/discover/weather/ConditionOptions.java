@@ -37,6 +37,7 @@ public class ConditionOptions
             public void onComplete(@NonNull Task<QuerySnapshot> task)
             {
                 if (task.isSuccessful())
+                    //noinspection ConstantConditions
                     for (QueryDocumentSnapshot document : task.getResult())
                         options.put(Integer.parseInt(document.getId()),
                             document.getString("display"));
