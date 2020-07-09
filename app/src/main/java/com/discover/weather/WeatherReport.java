@@ -167,7 +167,6 @@ public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeL
 
     private void notifyOfMandatoryConditionSelection()
     {
-        // Do the things
         Toast.makeText(getApplicationContext(), "The overall condition must be selected",
             Toast.LENGTH_LONG).show();
 
