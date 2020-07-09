@@ -44,9 +44,7 @@ public class ConfirmAndTag extends AppCompatActivity implements OnMapReadyCallba
         if (savedInstanceState != null)
             map_view_bundle = savedInstanceState.getBundle(MAP_VIEW_BUNDLE_KEY);
 
-        map_view = findViewById(R.id.mapView);
-        map_view.onCreate(map_view_bundle);
-        map_view.getMapAsync(this);
+        prepareMap(map_view_bundle);
         reading = getIntent().getExtras().getParcelable(("reading"));
         findViewById(R.id.btnConfirm).setOnClickListener(this);
     }
@@ -134,6 +132,13 @@ public class ConfirmAndTag extends AppCompatActivity implements OnMapReadyCallba
 
     @Override
     public void onMyLocationClick(@NonNull Location location) { }
+
+    private void prepareMap(Bundle map_view_bundle)
+    {
+        map_view = findViewById(R.id.mapView);
+        map_view.onCreate(map_view_bundle);
+        map_view.getMapAsync(this);
+    }
 
     private void checkAndEnableLocationService()
     {
