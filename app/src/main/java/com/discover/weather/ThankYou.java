@@ -2,6 +2,7 @@ package com.discover.weather;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -24,9 +25,13 @@ public class ThankYou extends AppCompatActivity
             @Override
             public void run()
             {
-                --time_to_display;
-                Log.d("ui-behave", "Display remain " + time_to_display + "s");
-                ticker.postDelayed(this, 1000);
+                if (time_to_display < 0)
+                    startActivity(new Intent(getApplicationContext(),Home.class));
+                else {
+                    --time_to_display;
+                    Log.d("ui-behave","Display remain " + time_to_display + "s");
+                    ticker.postDelayed(this,1000);
+                }
             }
         }, 1000);
     }
