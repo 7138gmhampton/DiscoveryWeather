@@ -112,7 +112,7 @@ public class ConfirmAndTag extends AppCompatActivity implements OnMapReadyCallba
         this.map.setMinZoomPreference(12);
         this.map.moveCamera(CameraUpdateFactory.newLatLng(
                 new LatLng(56.463266, -2.974478)));
-        checkAndEnableLocationService();
+        enableLocationService();
     }
 
     @Override
@@ -140,7 +140,7 @@ public class ConfirmAndTag extends AppCompatActivity implements OnMapReadyCallba
         map_view.getMapAsync(this);
     }
 
-    private void checkAndEnableLocationService()
+    private void enableLocationService()
     {
         if (ContextCompat.checkSelfPermission(this,
             ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED)
