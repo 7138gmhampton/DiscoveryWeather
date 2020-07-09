@@ -2,6 +2,7 @@ package com.discover.weather;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -179,5 +180,9 @@ public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeL
         // Do the things
         Toast.makeText(getApplicationContext(), "The overall condition must be selected",
             Toast.LENGTH_LONG).show();
+
+        TextView condition_label = findViewById(R.id.textConditions);
+        condition_label.setTextColor(getResources().getColor(android.R.color.holo_red_light));
+        condition_label.setTypeface(condition_label.getTypeface(),Typeface.BOLD);
     }
 }
