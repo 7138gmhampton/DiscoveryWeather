@@ -135,6 +135,11 @@ public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeL
 
     private void submitReadingForConfirmation()
     {
+        if (selected_condition < 0) {
+            notifyOfMandatoryConditionSelection();
+            return;
+        }
+
         WeatherReading reading = new WeatherReading(
                 setFloatMetric(findViewById(R.id.editTemp)),
                 setFloatMetric(findViewById(R.id.editPressure)),
@@ -166,5 +171,10 @@ public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeL
 
         if (source_text.trim().length() < 1) return null;
         else return Integer.parseInt(source_text);
+    }
+
+    private void notifyOfMandatoryConditionSelection()
+    {
+        // Do the things
     }
 }
