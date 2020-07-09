@@ -26,7 +26,6 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.HashMap;
-import java.util.Map;
 
 public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeListener,
         OnClickListener, ConditionFragment.ConditionFragmentListener
