@@ -121,29 +121,6 @@ public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeL
         condition_label.setTypeface(null, Typeface.NORMAL);
     }
 
-    @SuppressLint("UseSparseArrays")
-    @SuppressWarnings("ConstantConditions")
-    private void populateConditionOptions()
-    {
-        overall_condition_options = new HashMap<>();
-        FirebaseFirestore database = FirebaseFirestore.getInstance();
-
-        database.collection("condition").get().addOnCompleteListener(new
-            OnCompleteListener<QuerySnapshot>()
-            {
-             @Override
-             public void onComplete(@NonNull Task<QuerySnapshot> task)
-             {
-                 if (task.isSuccessful())
-                     for (QueryDocumentSnapshot document : task.getResult()) {
-                         overall_condition_options.put(Integer.parseInt(document.getId()),
-                                 document.getString("display"));
-                     }
-                 else Log.e("database", "Error querying: " + task.getException());
-             }
-            });
-    }
-
     private void showConditionDialog()
     {
         Bundle condition_options_bundle = new Bundle();
