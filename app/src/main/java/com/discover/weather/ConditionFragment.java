@@ -52,6 +52,7 @@ public class ConditionFragment extends DialogFragment
             listener_ = (ConditionFragmentListener)context;
         }
         catch (ClassCastException err) {
+            //noinspection ConstantConditions
             throw new ClassCastException(getActivity().toString() +
                     " must implement ConditionFragmentListener");
         }
@@ -62,7 +63,7 @@ public class ConditionFragment extends DialogFragment
         void onClickCondition(int index);
     }
 
-    private ArrayAdapter prepareAdapter(HashMap<Integer,String> conditions)
+    private ArrayAdapter<String> prepareAdapter(HashMap<Integer,String> conditions)
     {
         String[] options = conditions.values().toArray(new String[0]);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(
