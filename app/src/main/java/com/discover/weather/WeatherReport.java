@@ -58,7 +58,6 @@ public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeL
         super.onResume();
         updateWindDirectionDisplay();
         updateSelectedConditionDisplay();
-        Log.d("activity", "onResume called");
     }
 
     @Override
@@ -112,11 +111,15 @@ public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeL
         if (selected_condition < 0) condition_display.setText(R.string.placeholder_condition);
         else {
             condition_display.setText(overall_condition_options.get(selected_condition));
-            Log.d("activity", overall_condition_options.get(selected_condition));
-            TextView condition_label = findViewById(R.id.textConditions);
-            condition_label.setTextColor(default_colour);
-            condition_label.setTypeface(null, Typeface.NORMAL);
+            removeHighlight();
         }
+    }
+
+    private void removeHighlight()
+    {
+        TextView condition_label = findViewById(R.id.textConditions);
+        condition_label.setTextColor(default_colour);
+        condition_label.setTypeface(null, Typeface.NORMAL);
     }
 
     @SuppressLint("UseSparseArrays")
