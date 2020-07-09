@@ -45,29 +45,11 @@ public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeL
         ((SeekBar)findViewById(R.id.seekWind)).setOnSeekBarChangeListener(this);
         findViewById(R.id.textConditionSelected).setOnClickListener(this);
         findViewById(R.id.btnConfirm).setOnClickListener(this);
-//        populateConditionOptions();
         overall_condition_options = ConditionOptions.getInstance().getOptions();
-        for (Map.Entry<Integer,String> condition : overall_condition_options.entrySet())
-            Log.d("activity", "("+condition.getKey()+") - "+condition.getValue());
 
         if (savedInstanceState != null) {
             selected_condition = savedInstanceState.getInt("condition", -1);
-//            if (savedInstanceState.getSerializable("options") != null)
-//                overall_condition_options = (HashMap<Integer, String>)savedInstanceState
-//                    .getSerializable("options");
-//            else populateConditionOptions();
         } else selected_condition = -1;
-        Log.d("activity","onCreate called with condition " + selected_condition);
-    }
-
-    @Override
-    protected void onStart()
-    {
-        super.onStart();
-
-//        updateWindDirectionDisplay();
-//        updateSelectedConditionDisplay();
-        Log.d("activity", "onStart called");
     }
 
     @Override
@@ -84,7 +66,6 @@ public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeL
     {
         super.onSaveInstanceState(out_state);
         out_state.putInt("condition", selected_condition);
-        out_state.putSerializable("options", overall_condition_options);
     }
 
     @Override
@@ -135,9 +116,6 @@ public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeL
             TextView condition_label = findViewById(R.id.textConditions);
             condition_label.setTextColor(default_colour);
             condition_label.setTypeface(null, Typeface.NORMAL);
-//            condition_display.setTextColor(default_colour);
-//            condition_display.setTypeface(condition_display.getTypeface(),
-//                Typeface.NORMAL);
         }
     }
 
