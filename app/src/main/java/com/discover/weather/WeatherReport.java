@@ -26,6 +26,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeListener,
         OnClickListener, ConditionFragment.ConditionFragmentListener
@@ -44,11 +45,18 @@ public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeL
         ((SeekBar)findViewById(R.id.seekWind)).setOnSeekBarChangeListener(this);
         findViewById(R.id.textConditionSelected).setOnClickListener(this);
         findViewById(R.id.btnConfirm).setOnClickListener(this);
-        populateConditionOptions();
+//        populateConditionOptions();
+        overall_condition_options = ConditionOptions.getInstance().getOptions();
+        for (Map.Entry<Integer,String> condition : overall_condition_options.entrySet())
+            Log.d("activity", "("+condition.getKey()+") - "+condition.getValue());
 
-        if (savedInstanceState != null)
+        if (savedInstanceState != null) {
             selected_condition = savedInstanceState.getInt("condition", -1);
-        else selected_condition = -1;
+//            if (savedInstanceState.getSerializable("options") != null)
+//                overall_condition_options = (HashMap<Integer, String>)savedInstanceState
+//                    .getSerializable("options");
+//            else populateConditionOptions();
+        } else selected_condition = -1;
         Log.d("activity","onCreate called with condition " + selected_condition);
     }
 
@@ -76,6 +84,7 @@ public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeL
     {
         super.onSaveInstanceState(out_state);
         out_state.putInt("condition", selected_condition);
+        out_state.putSerializable("options", overall_condition_options);
     }
 
     @Override
