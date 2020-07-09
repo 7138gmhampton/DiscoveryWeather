@@ -203,6 +203,11 @@ public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeL
         Toast.makeText(getApplicationContext(), "The overall condition must be selected",
             Toast.LENGTH_LONG).show();
 
+        applyHighlight();
+    }
+
+    private void applyHighlight()
+    {
         TextView condition_label = findViewById(R.id.textConditions);
         condition_label.setTextColor(getResources().getColor(android.R.color.holo_red_light));
         condition_label.setTypeface(null,Typeface.BOLD);
