@@ -46,7 +46,10 @@ public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeL
         findViewById(R.id.btnConfirm).setOnClickListener(this);
         populateConditionOptions();
 
-        selected_condition = -1;
+        if (savedInstanceState != null)
+            selected_condition = savedInstanceState.getInt("condition", -1);
+        else selected_condition = -1;
+        Log.d("activity","onCreate called with condition " + selected_condition);
     }
 
     @Override
@@ -54,8 +57,25 @@ public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeL
     {
         super.onStart();
 
+//        updateWindDirectionDisplay();
+//        updateSelectedConditionDisplay();
+        Log.d("activity", "onStart called");
+    }
+
+    @Override
+    protected void onResume()
+    {
+        super.onResume();
         updateWindDirectionDisplay();
         updateSelectedConditionDisplay();
+        Log.d("activity", "onResume called");
+    }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle out_state)
+    {
+        super.onSaveInstanceState(out_state);
+        out_state.putInt("condition", selected_condition);
     }
 
     @Override
@@ -102,6 +122,7 @@ public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeL
         if (selected_condition < 0) condition_display.setText(R.string.placeholder_condition);
         else {
             condition_display.setText(overall_condition_options.get(selected_condition));
+            Log.d("activity", overall_condition_options.get(selected_condition));
             TextView condition_label = findViewById(R.id.textConditions);
             condition_label.setTextColor(default_colour);
             condition_label.setTypeface(null, Typeface.NORMAL);
