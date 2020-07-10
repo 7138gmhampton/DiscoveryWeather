@@ -22,4 +22,9 @@
     <string name="text_thank_you">
         Thank You for submitting a recording of the weather where you are!
     </string>
+    <string name="text_map_inx">
+        Use the map to set the location for which you are submitting this weather reading.
+        If you have provided the permission to the location services you can press the
+        button in the corner to get your current location.
+    </string>
 </resources>
