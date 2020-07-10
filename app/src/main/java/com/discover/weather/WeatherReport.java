@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.EditText;
@@ -93,6 +94,8 @@ public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeL
                 setText(getString(
                 R.string.display_wind_direction,
                 ((SeekBar)findViewById(R.id.seekWind)).getProgress()));
+        Log.d("display",
+            Cardinal.getCardinal(((SeekBar)findViewById(R.id.seekWind)).getProgress()));
     }
 
     private void updateSelectedConditionDisplay()
