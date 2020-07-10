@@ -24,10 +24,17 @@
             android:paddingBottom="32dp">
 
             <TextView
+                android:id="@+id/textReportInx"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/text_report_inx"
+                android:textSize="18sp" />
+
+            <TextView
                 android:id="@+id/textTemp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="16dp"
                 android:labelFor="@id/layoutTemp"
                 android:text="@string/label_temp"
                 android:textSize="18sp" />

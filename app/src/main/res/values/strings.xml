@@ -27,4 +27,8 @@
         If you have provided the permission to the location services you can press the
         button in the corner to get your current location.
     </string>
+    <string name="text_report_inx">
+        If you don\'t have a measurement for a given field just leave it blank.
+        The only required selection is the overall conditions.
+    </string>
 </resources>
