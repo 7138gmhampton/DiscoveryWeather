@@ -96,12 +96,8 @@ public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeL
             case R.id.btnNorthWest:
                 changeDirectionToMatchCardinal(((Button)view).getText().toString());
                 break;
-            case R.id.checkIndeterminateWind:
-                toggleDirectionControls();
-                break;
+            case R.id.checkIndeterminateWind: toggleDirectionControls(); break;
             case R.id.btnWindMoreInfo:
-//                DialogFragment more_info_dialog = new MoreInfoDialog();
-//                more_info_dialog.show(getSupportFragmentManager(), "more_info");
                 new MoreInfoDialog().show(getSupportFragmentManager(), "more_info");
         }
     }
