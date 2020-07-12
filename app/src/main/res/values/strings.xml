@@ -31,6 +31,11 @@
         If you don\'t have a measurement for a given field just leave it blank.
         The only required selection is the overall conditions.
     </string>
+    <string name="test_wind_more_info">
+        To determine the wind direction, face into the oncoming wind.
+        Use this as direction put into this application.
+        For example, an easterly wind is blowing towards you when you are facing East.
+    </string>
 
     <string name="btn_north">N</string>
     <string name="btn_north_east">NE</string>
