@@ -111,13 +111,14 @@ public class ConfirmAndTag extends AppCompatActivity implements OnMapReadyCallba
     {
         this.map = map;
         this.map.setMinZoomPreference(12);
-        this.map.moveCamera(CameraUpdateFactory.newLatLng(
-                new LatLng(56.463266, -2.974478)));
+//        this.map.moveCamera(CameraUpdateFactory.newLatLng(
+//                new LatLng(56.463266, -2.974478)));
         this.map.getUiSettings().setRotateGesturesEnabled(false);
 //        this.map.setMaxZoomPreference(30.0f);
         this.map.setMinZoomPreference(-10.0f);
 //        Log.d("googlemap", this.map.getMaxZoomLevel() + " Max & " +
 //            this.map.getMinZoomLevel() + " Min");
+        this.map.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(56.463266, -2.974478), 10.0f));
         enableLocationService();
     }
 
