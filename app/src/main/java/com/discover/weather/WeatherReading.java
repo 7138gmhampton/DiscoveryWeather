@@ -12,12 +12,12 @@ import javax.annotation.Nullable;
 @SuppressWarnings("unused")
 public class WeatherReading implements Parcelable
 {
-    private final Float temperature_in_celsius;
-    private final Float pressure_in_hectopascals;
-    private final Float wind_speed_in_metres_per_sec;
-    private final Integer rainfall_in_millimetres;
-    private final Integer snowfall_in_millimetres;
-    private final Integer wind_direction_in_degrees;
+    private final Float temperature;
+    private final Float pressure;
+    private final Float wind_speed;
+    private final Integer rainfall;
+    private final Integer snowfall;
+    private final Integer wind_direction;
     private final int overall_condition;
 
     public static final Parcelable.Creator<WeatherReading> CREATOR =
@@ -35,20 +35,20 @@ public class WeatherReading implements Parcelable
             };
 
     WeatherReading(
-            @Nullable Float temperature_in_celsius,
-            @Nullable Float pressure_in_hectopascals,
-            @Nullable Float wind_speed_in_metres_per_sec,
-            @Nullable Integer rainfall_in_millimetres,
-            @Nullable Integer snowfall_in_millimetres,
-            @Nullable Integer wind_direction_in_degrees,
+            @Nullable Float temperature,
+            @Nullable Float pressure,
+            @Nullable Float wind_speed,
+            @Nullable Integer rainfall,
+            @Nullable Integer snowfall,
+            @Nullable Integer wind_direction,
             int overall_condition)
     {
-        this.temperature_in_celsius = temperature_in_celsius;
-        this.pressure_in_hectopascals = pressure_in_hectopascals;
-        this.wind_speed_in_metres_per_sec = wind_speed_in_metres_per_sec;
-        this.rainfall_in_millimetres = rainfall_in_millimetres;
-        this.snowfall_in_millimetres = snowfall_in_millimetres;
-        this.wind_direction_in_degrees = wind_direction_in_degrees;
+        this.temperature = temperature;
+        this.pressure = pressure;
+        this.wind_speed = wind_speed;
+        this.rainfall = rainfall;
+        this.snowfall = snowfall;
+        this.wind_direction = wind_direction;
         this.overall_condition = overall_condition;
     }
 
@@ -56,21 +56,21 @@ public class WeatherReading implements Parcelable
     {
         ClassLoader class_loader = WeatherReading.class.getClassLoader();
 
-        this.temperature_in_celsius = (Float)in.readValue(class_loader);
-        this.pressure_in_hectopascals = (Float)in.readValue(class_loader);
-        this.wind_speed_in_metres_per_sec = (Float)in.readValue(class_loader);
-        this.rainfall_in_millimetres = (Integer)in.readValue(class_loader);
-        this.snowfall_in_millimetres = (Integer)in.readValue(class_loader);
-        this.wind_direction_in_degrees = (Integer)in.readValue(class_loader);
+        this.temperature = (Float)in.readValue(class_loader);
+        this.pressure = (Float)in.readValue(class_loader);
+        this.wind_speed = (Float)in.readValue(class_loader);
+        this.rainfall = (Integer)in.readValue(class_loader);
+        this.snowfall = (Integer)in.readValue(class_loader);
+        this.wind_direction = (Integer)in.readValue(class_loader);
         this.overall_condition = in.readInt();
     }
 
-    @Nullable Float getTemperature() { return temperature_in_celsius; }
-    @Nullable Float getPressure() { return pressure_in_hectopascals; }
-    @Nullable Float getWindSpeed() { return wind_speed_in_metres_per_sec; }
-    @Nullable Integer getRainfall() { return  rainfall_in_millimetres; }
-    @Nullable Integer getSnowfall() { return snowfall_in_millimetres; }
-    @Nullable Integer getWindDirection() { return wind_direction_in_degrees; }
+    @Nullable Float getTemperature() { return temperature; }
+    @Nullable Float getPressure() { return pressure; }
+    @Nullable Float getWindSpeed() { return wind_speed; }
+    @Nullable Integer getRainfall() { return rainfall; }
+    @Nullable Integer getSnowfall() { return snowfall; }
+    @Nullable Integer getWindDirection() { return wind_direction; }
     int getConditionCode() { return overall_condition; }
 
     @Override
@@ -79,12 +79,12 @@ public class WeatherReading implements Parcelable
     @Override
     public void writeToParcel(Parcel out, int flags)
     {
-        out.writeValue(temperature_in_celsius);
-        out.writeValue(pressure_in_hectopascals);
-        out.writeValue(wind_speed_in_metres_per_sec);
-        out.writeValue(rainfall_in_millimetres);
-        out.writeValue(snowfall_in_millimetres);
-        out.writeValue(wind_direction_in_degrees);
+        out.writeValue(temperature);
+        out.writeValue(pressure);
+        out.writeValue(wind_speed);
+        out.writeValue(rainfall);
+        out.writeValue(snowfall);
+        out.writeValue(wind_direction);
         out.writeInt(overall_condition);
     }
 
@@ -92,12 +92,12 @@ public class WeatherReading implements Parcelable
     {
         HashMap<String,Object> data = new HashMap<>();
 
-        if (temperature_in_celsius != null)  data.put("temperature", temperature_in_celsius);
-        if (pressure_in_hectopascals != null) data.put("pressure", pressure_in_hectopascals);
-        if (wind_speed_in_metres_per_sec != null) data.put("wind_speed", wind_speed_in_metres_per_sec);
-        if (rainfall_in_millimetres != null) data.put("rainfall", rainfall_in_millimetres);
-        if (snowfall_in_millimetres != null) data.put("snowfall", snowfall_in_millimetres);
-        if (wind_direction_in_degrees != null) data.put("wind_direction", wind_direction_in_degrees);
+        if (temperature != null)  data.put("temperature", temperature);
+        if (pressure != null) data.put("pressure", pressure);
+        if (wind_speed != null) data.put("wind_speed", wind_speed);
+        if (rainfall != null) data.put("rainfall", rainfall);
+        if (snowfall != null) data.put("snowfall", snowfall);
+        if (wind_direction != null) data.put("wind_direction", wind_direction);
         data.put("condition", overall_condition);
         data.put("latitude", lat_long.latitude);
         data.put("longitude", lat_long.longitude);
