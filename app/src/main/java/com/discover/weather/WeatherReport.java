@@ -168,7 +168,7 @@ public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeL
                 setFloatMetric(findViewById(R.id.editSpeed)),
                 setIntegerMetric(findViewById(R.id.editRain)),
                 setIntegerMetric(findViewById(R.id.editSnow)),
-                ((SeekBar)findViewById(R.id.seekWind)).getProgress(),
+                setWindDirection(),
                 selected_condition);
 
         Intent start_confirmation = new Intent(getApplicationContext(), ConfirmAndTag.class);
@@ -193,6 +193,14 @@ public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeL
 
         if (source_text.trim().length() < 1) return null;
         else return Integer.parseInt(source_text);
+    }
+
+    @Nullable
+    private Integer setWindDirection()
+    {
+        if (((CheckBox)findViewById(R.id.checkIndeterminateWind)).isChecked())
+            return null;
+        return ((SeekBar)findViewById(R.id.seekWind)).getProgress();
     }
 
     private void notifyOfMandatoryConditionSelection()
