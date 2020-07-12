@@ -113,9 +113,8 @@ public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeL
     private void updateWindDirectionDisplay()
     {
         ((TextView)findViewById(R.id.textDirectionDisplay))
-                .setText(getString(
-                R.string.display_wind_direction,
-                ((SeekBar)findViewById(R.id.seekWind)).getProgress()));
+                .setText(getString(R.string.display_wind_direction,
+                    ((SeekBar)findViewById(R.id.seekWind)).getProgress()));
         ((TextView)findViewById(R.id.textDirectionDisplayCardinal))
             .setText(Cardinal.getCardinal(((SeekBar)findViewById(R.id.seekWind)).getProgress()));
     }
@@ -141,8 +140,7 @@ public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeL
     private void showConditionDialog()
     {
         Bundle condition_options_bundle = new Bundle();
-        condition_options_bundle.putSerializable("options",
-                overall_condition_options);
+        condition_options_bundle.putSerializable("options", overall_condition_options);
 
         DialogFragment condition_dialog = new ConditionFragment();
         condition_dialog.setArguments(condition_options_bundle);
@@ -215,8 +213,7 @@ public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeL
 
     private void changeDirectionToMatchCardinal(String cardinal)
     {
-        ((SeekBar)findViewById(R.id.seekWind))
-            .setProgress(Cardinal.getAbsoluteDirection(cardinal));
+        ((SeekBar)findViewById(R.id.seekWind)).setProgress(Cardinal.getAbsoluteDirection(cardinal));
     }
 
     private void toggleDirectionControls()
@@ -230,9 +227,8 @@ public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeL
         ((View)findViewById(R.id.textDirectionDisplayCardinal)).setEnabled(state);
     }
 
-    private void toggleSingleButtonSet(ViewGroup set, boolean state)
+    private void toggleSingleButtonSet(@NonNull ViewGroup set, boolean state)
     {
-        for (int iii = 0; iii < set.getChildCount(); ++iii)
-            set.getChildAt(iii).setEnabled(state);
+        for (int iii = 0; iii < set.getChildCount(); ++iii) set.getChildAt(iii).setEnabled(state);
     }
 }
