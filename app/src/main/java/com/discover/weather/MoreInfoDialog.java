@@ -15,7 +15,7 @@ public class MoreInfoDialog extends DialogFragment
     {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
-        builder.setMessage(R.string.test_wind_more_info);
+        builder.setMessage(R.string.text_wind_more_info);
 
         return builder.create();
     }

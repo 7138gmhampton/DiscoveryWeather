@@ -46,6 +46,7 @@ public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeL
         for (View view : findViewById(R.id.layoutCardinalsOff).getTouchables())
             view.setOnClickListener(this);
         findViewById(R.id.checkIndeterminateWind).setOnClickListener(this);
+        findViewById(R.id.btnWindMoreInfo).setOnClickListener(this);
         overall_condition_options = ConditionOptions.getInstance().getOptions();
 
         if (savedInstanceState != null) {
@@ -102,6 +103,10 @@ public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeL
                 if (((CheckBox)view).isChecked())
                     Log.d("ui-interaction", "Box checked");
                 else Log.d("ui-interaction", "Box unchecked");
+                break;
+            case R.id.btnWindMoreInfo:
+                DialogFragment more_info_dialog = new MoreInfoDialog();
+                more_info_dialog.show(getSupportFragmentManager(), "more_info");
         }
     }
 

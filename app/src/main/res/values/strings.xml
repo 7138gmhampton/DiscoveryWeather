@@ -3,6 +3,7 @@
     <string name="btn_post_text">Provide a Weather Recording</string>
     <string name="btn_submit">Submit</string>
     <string name="btn_confirm">Confirm</string>
+    <string name="btn_wind_more_info">More Info</string>
 
     <string name="label_temp">Temperature</string>
     <string name="label_temp_units">\u2103</string>
@@ -31,7 +32,7 @@
         If you don\'t have a measurement for a given field just leave it blank.
         The only required selection is the overall conditions.
     </string>
-    <string name="test_wind_more_info">
+    <string name="text_wind_more_info">
         To determine the wind direction, face into the oncoming wind.
         Use this as direction put into this application.
         For example, an easterly wind is blowing towards you when you are facing East.
