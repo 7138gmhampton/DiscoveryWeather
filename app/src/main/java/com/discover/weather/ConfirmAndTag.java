@@ -41,13 +41,14 @@ public class ConfirmAndTag extends AppCompatActivity implements OnMapReadyCallba
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_confirm_and_tag);
 
-        findViewById(R.id.btnConfirm).setOnClickListener(this);
         Bundle map_view_bundle = null;
         if (savedInstanceState != null)
             map_view_bundle = savedInstanceState.getBundle(MAP_VIEW_BUNDLE_KEY);
-
         prepareMap(map_view_bundle);
         reading = getIntent().getExtras().getParcelable(("reading"));
+
+        findViewById(R.id.btnConfirm).setOnClickListener(this);
+        findViewById(R.id.btnCancel).setOnClickListener(this);
     }
 
     @Override
@@ -127,7 +128,9 @@ public class ConfirmAndTag extends AppCompatActivity implements OnMapReadyCallba
     public void onClick(View view)
     {
         switch (view.getId()) {
-            case R.id.btnConfirm: submitReading();
+            case R.id.btnConfirm: submitReading(); break;
+            case R.id.btnCancel:
+                startActivity(new Intent(getApplicationContext(), Home.class));
         }
     }
 
