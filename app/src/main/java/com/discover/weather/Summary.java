@@ -3,6 +3,8 @@ package com.discover.weather;
 import android.content.Context;
 import android.content.res.Resources;
 
+import java.util.Locale;
+
 class Summary
 {
     private static final String intro = "Details to be submitted:" + System.lineSeparator();
@@ -35,29 +37,36 @@ class Summary
 
     private static String appendDetail(String name, Float metric, String unit)
     {
-        String detail = "";
-
-        if (metric != null) {
-            detail += name;
-            detail += String.format("%.2f", metric);
-            detail += unit;
-            detail += System.lineSeparator();
-        }
-
-        return detail;
+//        String detail = "";
+//
+//        if (metric != null) {
+//            detail += name;
+//            detail += String.format("%.2f", metric);
+//            detail += unit;
+//            detail += System.lineSeparator();
+//        }
+//
+//        return detail;
+        if (metric != null)
+            return name + String.format(Locale.UK,"%.2f", metric) + unit +
+                System.lineSeparator();
+        return "";
     }
 
     private static String appendDetail(String name, Integer metric, String unit)
     {
-        String detail = "";
-
-        if (metric != null) {
-            detail += name;
-            detail += metric.toString();
-            detail += unit;
-            detail += System.lineSeparator();
-        }
-
-        return detail;
+//        String detail = "";
+//
+//        if (metric != null) {
+//            detail += name;
+//            detail += metric.toString();
+//            detail += unit;
+//            detail += System.lineSeparator();
+//        }
+//
+//        return detail;
+        if (metric != null)
+            return  name + metric.toString() + unit + System.lineSeparator();
+        return "";
     }
 }
