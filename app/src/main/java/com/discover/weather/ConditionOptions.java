@@ -31,7 +31,8 @@ public class ConditionOptions
         options = new HashMap<>();
         FirebaseFirestore database = FirebaseFirestore.getInstance();
 
-        database.collection("condition").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>()
+        database.collection("condition").get()
+            .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>()
         {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task)
