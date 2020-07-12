@@ -19,17 +19,17 @@ class Summary
             ConditionOptions.getInstance().getOptions().get(reading.getConditionCode()) +
             System.lineSeparator() +
             appendDetail("Temperature: ", reading.getTemperature(),
-                resources.getString(R.string.label_temp_units)) +
+                resources.getString(R.string.unit_temp)) +
             appendDetail("Pressure: ", reading.getPressure(),
                 resources.getString(R.string.label_pressure_unit)) +
             appendDetail("Wind Speed: ", reading.getWindSpeed(),
-                resources.getString(R.string.label_speed_unit)) +
+                resources.getString(R.string.unit_speed)) +
             appendDetail("Wind Direction: ", reading.getWindDirection(),
-                resources.getString(R.string.units_direction)) +
+                resources.getString(R.string.unit_direction)) +
             appendDetail("Rainfall: ", reading.getRainfall(),
-                resources.getString(R.string.label_precipitation_unit)) +
+                resources.getString(R.string.unit_precipitation)) +
             appendDetail("Snowfall: ", reading.getSnowfall(),
-                resources.getString(R.string.label_precipitation_unit)) +
+                resources.getString(R.string.unit_precipitation)) +
             outro;
     }
 
