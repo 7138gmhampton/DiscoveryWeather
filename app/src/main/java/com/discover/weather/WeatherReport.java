@@ -40,7 +40,6 @@ public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeL
         ((SeekBar)findViewById(R.id.seekWind)).setOnSeekBarChangeListener(this);
         findViewById(R.id.textConditionSelected).setOnClickListener(this);
         findViewById(R.id.btnConfirm).setOnClickListener(this);
-//        findViewById(R.id.btnNorth).setOnClickListener(this);
         for (View view : findViewById(R.id.layoutCardinalsMain).getTouchables())
             view.setOnClickListener(this);
         for (View view : findViewById(R.id.layoutCardinalsOff).getTouchables())
@@ -233,19 +232,10 @@ public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeL
 
     private void toggleDirectionControls()
     {
-//        for (View button : findViewById(R.id.layoutCardinalsMain).getTouchables())
-//            button.setEnabled(state);
-//        for (int iii = 0; iii < ((ViewGroup)findViewById(R.id.layoutCardinalsMain)).getChildCount(); ++iii)
-//            ((ViewGroup)findViewById(R.id.layoutCardinalsMain)).getChildAt(iii).setEnabled(state);
         boolean state = !((CheckBox)findViewById(R.id.checkIndeterminateWind)).isChecked();
 
         toggleSingleButtonSet((ViewGroup)findViewById(R.id.layoutCardinalsMain), state);
         toggleSingleButtonSet((ViewGroup)findViewById(R.id.layoutCardinalsOff), state);
-//        Button indiv_button = findViewById(R.id.btnNorthEast);
-//        indiv_button.setEnabled(state);
-        if (state)
-            Log.d("ui-interaction", "State toggled to true");
-        else Log.d("ui-interaction", "State toggled to false");
         ((View)findViewById(R.id.seekWind)).setEnabled(state);
         ((View)findViewById(R.id.textDirectionDisplay)).setEnabled(state);
         ((View)findViewById(R.id.textDirectionDisplayCardinal)).setEnabled(state);
