@@ -38,7 +38,11 @@ public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeL
         ((SeekBar)findViewById(R.id.seekWind)).setOnSeekBarChangeListener(this);
         findViewById(R.id.textConditionSelected).setOnClickListener(this);
         findViewById(R.id.btnConfirm).setOnClickListener(this);
-        findViewById(R.id.btnNorth).setOnClickListener(this);
+//        findViewById(R.id.btnNorth).setOnClickListener(this);
+        for (View view : findViewById(R.id.layoutCardinalsMain).getTouchables())
+            view.setOnClickListener(this);
+        for (View view : findViewById(R.id.layoutCardinalsOff).getTouchables())
+            view.setOnClickListener(this);
         overall_condition_options = ConditionOptions.getInstance().getOptions();
 
         if (savedInstanceState != null) {
@@ -80,6 +84,13 @@ public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeL
             case R.id.textConditionSelected: showConditionDialog(); break;
             case R.id.btnConfirm: submitReadingForConfirmation(); break;
             case R.id.btnNorth:
+            case R.id.btnNorthEast:
+            case R.id.btnEast:
+            case R.id.btnSouthEast:
+            case R.id.btnSouth:
+            case R.id.btnSouthWest:
+            case R.id.btnWest:
+            case R.id.btnNorthWest:
                 changeDirectionToMatchCardinal(((Button)view).getText().toString());
         }
     }
