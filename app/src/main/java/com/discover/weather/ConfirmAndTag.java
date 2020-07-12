@@ -1,5 +1,6 @@
 package com.discover.weather;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
@@ -8,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -130,7 +132,30 @@ public class ConfirmAndTag extends AppCompatActivity implements OnMapReadyCallba
         switch (view.getId()) {
             case R.id.btnConfirm: submitReading(); break;
             case R.id.btnCancel:
-                startActivity(new Intent(getApplicationContext(), Home.class));
+//                startActivity(new Intent(getApplicationContext(), Home.class));
+                final AlertDialog.Builder dialog_builder =
+                    new AlertDialog.Builder(this);
+                dialog_builder.setMessage(getResources().getString(R.string.text_cancel))
+                    .setNegativeButton(R.string.dialog_no,new DialogInterface.OnClickListener()
+                    {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which)
+                        {
+                            dialog.dismiss();
+                        }
+                    })
+                    .setPositiveButton(R.string.dialog_yes,new DialogInterface.OnClickListener()
+                    {
+                        @Override
+                        public void onClick(DialogInterface dialog,int which)
+                        {
+//                            dialog.dismiss();
+                            startActivity(new Intent(getApplicationContext(), Home.class));
+                        }
+                    });
+//                AlertDialog confirmation_dialog = dialog_builder.create();
+                dialog_builder.create().show();
+//                confirmation_dialog.show();
         }
     }
 

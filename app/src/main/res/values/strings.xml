@@ -5,6 +5,9 @@
     <string name="btn_confirm">Confirm</string>
     <string name="btn_wind_more_info">More Info</string>
 
+    <string name="dialog_yes">Yes</string>
+    <string name="dialog_no">No</string>
+
     <string name="label_temp">Temperature</string>
     <string name="label_temp_units">\u2103</string>
     <string name="label_pressure">Pressure</string>
@@ -36,6 +39,10 @@
         To determine the wind direction, face into the oncoming wind.
         Use this as direction put into this application.
         For example, an easterly wind is blowing towards you when you are facing East.
+    </string>
+    <string name="text_cancel">
+        Cancel weather reading submission?
+        Please note the data previous entered will be unretrievable.
     </string>
 
     <string name="btn_north">N</string>
