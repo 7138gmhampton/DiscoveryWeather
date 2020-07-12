@@ -132,12 +132,12 @@ public class ConfirmAndTag extends AppCompatActivity implements OnMapReadyCallba
         switch (view.getId()) {
             case R.id.btnConfirm:
 //                submitReading();
-                String summary_display = "Details to be submitted:" + System.lineSeparator() +
-                    reading.authorSummary() + System.lineSeparator() + System.lineSeparator() +
-                    "Are these details correct?";
+//                String summary_display = "Details to be submitted:" + System.lineSeparator() +
+//                    reading.authorSummary() + System.lineSeparator() + System.lineSeparator() +
+//                    "Are these details correct?";
                 AlertDialog.Builder submit_dialog = new AlertDialog.Builder(this);
 //                submit_dialog.setMessage("Details to be submitted")
-                submit_dialog.setMessage(summary_display)
+                submit_dialog.setMessage(authorSummary())
                     .setNegativeButton(R.string.dialog_no, new DialogInterface.OnClickListener()
                     {
                         @Override
@@ -151,7 +151,8 @@ public class ConfirmAndTag extends AppCompatActivity implements OnMapReadyCallba
                         @Override
                         public void onClick(DialogInterface dialog, int which)
                         {
-                            dialog.dismiss();
+//                            dialog.dismiss();
+                            submitReading();
                         }
                     });
                 submit_dialog.create().show();
@@ -221,5 +222,54 @@ public class ConfirmAndTag extends AppCompatActivity implements OnMapReadyCallba
 
         WorkManager.getInstance(getApplicationContext()).enqueue(upload_request);
         startActivity(new Intent(getApplicationContext(), ThankYou.class));
+    }
+
+    private String authorSummary()
+    {
+        String summary = "Details to be submitted:" + System.lineSeparator();
+
+        summary += ConditionOptions.getInstance().getOptions().get(reading.getConditionCode()) +
+            System.lineSeparator();
+//        if (reading.getTemperature() != null)
+//            summary += reading.getTemperature() + getResources().getString(R.string.label_temp_units) +
+//                System.lineSeparator();
+        summary += appendDetail("Temperature: ", reading.getTemperature(), R.string.label_temp_units);
+        summary += appendDetail("Pressure: ", reading.getPressure(), R.string.label_pressure_unit);
+        summary += appendDetail("Wind Speed: ", reading.getWindSpeed(), R.string.label_speed_unit);
+        summary += appendDetail("Wind Direction: ", reading.getWindDirection(), R.string.units_direction);
+        summary += appendDetail("Rainfall: ", reading.getRainfall(), R.string.label_precipitation_unit);
+        summary += appendDetail("Snowfall: ", reading.getSnowfall(), R.string.label_precipitation_unit);
+
+        summary += System.lineSeparator() + System.lineSeparator() + "Are these details correct?";
+        return summary;
+    }
+
+    @SuppressWarnings("DefaultLocale")
+    private String appendDetail(String name, Float metric, int unit)
+    {
+        String detail = "";
+
+        if (metric != null) {
+            detail += name;
+            detail += String.format("%.2f", metric);
+            detail += getResources().getString(unit);
+            detail += System.lineSeparator();
+        }
+
+        return detail;
+    }
+
+    private String appendDetail(String name, Integer metric, int unit)
+    {
+        String detail = "";
+
+        if (metric != null) {
+            detail += name;
+            detail += metric.toString();
+            detail += getResources().getString(unit);
+            detail += System.lineSeparator();
+        }
+
+        return detail;
     }
 }

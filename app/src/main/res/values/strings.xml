@@ -23,6 +23,8 @@
     <string name="display_wind_direction">%d\u00B0</string>
     <string name="placeholder_condition">-Select Condition-</string>
 
+    <string name="units_direction">\u00B0</string>
+
     <string name="text_thank_you">
         Thank You for submitting a recording of the weather where you are!
     </string>
