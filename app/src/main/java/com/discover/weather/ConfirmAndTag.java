@@ -112,10 +112,13 @@ public class ConfirmAndTag extends AppCompatActivity implements OnMapReadyCallba
     public void onMapReady(GoogleMap map)
     {
         this.map = map;
+
         this.map.setMinZoomPreference(12);
         this.map.getUiSettings().setRotateGesturesEnabled(false);
         this.map.setMinZoomPreference(-10.0f);
-        this.map.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(56.463266, -2.974478), 10.0f));
+        this.map.moveCamera(CameraUpdateFactory.newLatLngZoom(
+            new LatLng(56.463266, -2.974478), 10.0f));
+
         enableLocationService();
     }
 
@@ -124,25 +127,7 @@ public class ConfirmAndTag extends AppCompatActivity implements OnMapReadyCallba
     {
         switch (view.getId()) {
             case R.id.btnConfirm:
-                AlertDialog.Builder submit_dialog = new AlertDialog.Builder(this);
-                submit_dialog.setMessage(authorSummary())
-                    .setNegativeButton(R.string.dialog_no, new DialogInterface.OnClickListener()
-                    {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which)
-                        {
-                            dialog.dismiss();
-                        }
-                    })
-                    .setPositiveButton(R.string.dialog_yes, new DialogInterface.OnClickListener()
-                    {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which)
-                        {
-                            submitReading();
-                        }
-                    });
-                submit_dialog.create().show();
+                confirmSubmission();
                 break;
             case R.id.btnCancel:
                 final AlertDialog.Builder cancel_dialog =
@@ -176,6 +161,23 @@ public class ConfirmAndTag extends AppCompatActivity implements OnMapReadyCallba
 
     @Override
     public void onMyLocationClick(@NonNull Location location) { }
+
+    private void confirmSubmission()
+    {
+        AlertDialog.Builder submit_dialog = new AlertDialog.Builder(this);
+        submit_dialog.setMessage(authorSummary())
+            .setNegativeButton(R.string.dialog_no, new DialogInterface.OnClickListener()
+            {
+                @Override
+                public void onClick(DialogInterface dialog, int which) { dialog.dismiss(); }
+            })
+            .setPositiveButton(R.string.dialog_yes, new DialogInterface.OnClickListener()
+            {
+                @Override
+                public void onClick(DialogInterface dialog, int which) { submitReading(); }
+            });
+        submit_dialog.create().show();
+    }
 
     private void prepareMap(Bundle map_view_bundle)
     {
