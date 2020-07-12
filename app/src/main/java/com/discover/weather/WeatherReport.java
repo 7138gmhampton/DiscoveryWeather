@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
@@ -99,9 +98,6 @@ public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeL
                 break;
             case R.id.checkIndeterminateWind:
                 toggleDirectionControls();
-                if (((CheckBox)view).isChecked())
-                    Log.d("ui-interaction", "Box checked");
-                else Log.d("ui-interaction", "Box unchecked");
                 break;
             case R.id.btnWindMoreInfo:
                 DialogFragment more_info_dialog = new MoreInfoDialog();
@@ -123,8 +119,6 @@ public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeL
                 .setText(getString(
                 R.string.display_wind_direction,
                 ((SeekBar)findViewById(R.id.seekWind)).getProgress()));
-        Log.d("display",
-            Cardinal.getCardinal(((SeekBar)findViewById(R.id.seekWind)).getProgress()));
         ((TextView)findViewById(R.id.textDirectionDisplayCardinal))
             .setText(Cardinal.getCardinal(((SeekBar)findViewById(R.id.seekWind)).getProgress()));
     }
@@ -226,8 +220,6 @@ public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeL
     {
         ((SeekBar)findViewById(R.id.seekWind))
             .setProgress(Cardinal.getAbsoluteDirection(cardinal));
-        Log.d("ui-interaction", "Seek bar at " +
-            ((SeekBar)findViewById(R.id.seekWind)).getProgress());
     }
 
     private void toggleDirectionControls()
