@@ -193,6 +193,15 @@
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
+                    <CheckBox
+                        android:id="@+id/checkIndeterminateWind"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_gravity="end"
+                        android:layout_weight="1"
+                        android:checked="true"
+                        android:text="@string/check_indeterminate_wind" />
+
                     <LinearLayout
                         android:id="@+id/layoutCardinalsMain"
                         style="?android:buttonBarStyle"

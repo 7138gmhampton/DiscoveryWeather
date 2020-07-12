@@ -40,4 +40,6 @@
     <string name="btn_south_west">SW</string>
     <string name="btn_west">W</string>
     <string name="btn_north_west">NW</string>
+
+    <string name="check_indeterminate_wind">Don\'t know</string>
 </resources>
