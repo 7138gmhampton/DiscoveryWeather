@@ -130,12 +130,37 @@ public class ConfirmAndTag extends AppCompatActivity implements OnMapReadyCallba
     public void onClick(View view)
     {
         switch (view.getId()) {
-            case R.id.btnConfirm: submitReading(); break;
+            case R.id.btnConfirm:
+//                submitReading();
+                String summary_display = "Details to be submitted:" + System.lineSeparator() +
+                    reading.authorSummary() + System.lineSeparator() + System.lineSeparator() +
+                    "Are these details correct?";
+                AlertDialog.Builder submit_dialog = new AlertDialog.Builder(this);
+//                submit_dialog.setMessage("Details to be submitted")
+                submit_dialog.setMessage(summary_display)
+                    .setNegativeButton(R.string.dialog_no, new DialogInterface.OnClickListener()
+                    {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which)
+                        {
+                            dialog.dismiss();
+                        }
+                    })
+                    .setPositiveButton(R.string.dialog_yes, new DialogInterface.OnClickListener()
+                    {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which)
+                        {
+                            dialog.dismiss();
+                        }
+                    });
+                submit_dialog.create().show();
+                break;
             case R.id.btnCancel:
 //                startActivity(new Intent(getApplicationContext(), Home.class));
-                final AlertDialog.Builder dialog_builder =
+                final AlertDialog.Builder cancel_dialog =
                     new AlertDialog.Builder(this);
-                dialog_builder.setMessage(getResources().getString(R.string.text_cancel))
+                cancel_dialog.setMessage(getResources().getString(R.string.text_cancel))
                     .setNegativeButton(R.string.dialog_no,new DialogInterface.OnClickListener()
                     {
                         @Override
@@ -154,7 +179,7 @@ public class ConfirmAndTag extends AppCompatActivity implements OnMapReadyCallba
                         }
                     });
 //                AlertDialog confirmation_dialog = dialog_builder.create();
-                dialog_builder.create().show();
+                cancel_dialog.create().show();
 //                confirmation_dialog.show();
         }
     }
