@@ -53,7 +53,6 @@
                 android:id="@+id/layoutOverallCondition"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginEnd="16dp"
                 android:background="@drawable/border"
                 android:orientation="vertical">
 
@@ -86,9 +85,8 @@
 
                 <LinearLayout
                     android:id="@+id/layoutAir"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_marginEnd="16dp"
                     android:layout_weight="1"
                     android:background="@drawable/border"
                     android:orientation="vertical">
@@ -165,9 +163,8 @@
 
                 <LinearLayout
                     android:id="@+id/layoutPrecipitation"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_marginEnd="16dp"
                     android:layout_weight="1"
                     android:background="@drawable/border"
                     android:orientation="vertical">
@@ -247,7 +244,6 @@
                 android:id="@+id/layoutWind"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginEnd="16dp"
                 android:background="@drawable/border"
                 android:orientation="vertical">
 
