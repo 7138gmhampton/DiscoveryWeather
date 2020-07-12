@@ -120,7 +120,6 @@ public class ConfirmAndTag extends AppCompatActivity implements OnMapReadyCallba
     }
 
     @Override
-    @SuppressWarnings("SwitchStatementWithTooFewBranches")
     public void onClick(View view)
     {
         switch (view.getId()) {
