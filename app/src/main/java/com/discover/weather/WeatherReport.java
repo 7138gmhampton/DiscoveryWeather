@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 
@@ -90,7 +91,8 @@ public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeL
                 break;
             case R.id.checkIndeterminateWind: toggleDirectionControls(); break;
             case R.id.btnWindMoreInfo:
-                new MoreInfoDialog().show(getSupportFragmentManager(), "more_info");
+                new AlertDialog.Builder(this).setMessage(R.string.text_wind_more_info)
+                    .create().show();
         }
     }
 
