@@ -100,8 +100,9 @@ public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeL
                 toggleDirectionControls();
                 break;
             case R.id.btnWindMoreInfo:
-                DialogFragment more_info_dialog = new MoreInfoDialog();
-                more_info_dialog.show(getSupportFragmentManager(), "more_info");
+//                DialogFragment more_info_dialog = new MoreInfoDialog();
+//                more_info_dialog.show(getSupportFragmentManager(), "more_info");
+                new MoreInfoDialog().show(getSupportFragmentManager(), "more_info");
         }
     }
 
