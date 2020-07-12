@@ -31,4 +31,13 @@
         If you don\'t have a measurement for a given field just leave it blank.
         The only required selection is the overall conditions.
     </string>
+
+    <string name="btn_north">N</string>
+    <string name="btn_north_east">NE</string>
+    <string name="btn_east">E</string>
+    <string name="btn_south_east">SE</string>
+    <string name="btn_south">S</string>
+    <string name="btn_south_west">SW</string>
+    <string name="btn_west">W</string>
+    <string name="btn_north_west">NW</string>
 </resources>
