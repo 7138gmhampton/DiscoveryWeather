@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
@@ -37,6 +38,7 @@ public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeL
         ((SeekBar)findViewById(R.id.seekWind)).setOnSeekBarChangeListener(this);
         findViewById(R.id.textConditionSelected).setOnClickListener(this);
         findViewById(R.id.btnConfirm).setOnClickListener(this);
+        findViewById(R.id.btnNorth).setOnClickListener(this);
         overall_condition_options = ConditionOptions.getInstance().getOptions();
 
         if (savedInstanceState != null) {
@@ -76,7 +78,9 @@ public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeL
     {
         switch (view.getId()) {
             case R.id.textConditionSelected: showConditionDialog(); break;
-            case R.id.btnConfirm: submitReadingForConfirmation();
+            case R.id.btnConfirm: submitReadingForConfirmation(); break;
+            case R.id.btnNorth:
+                changeDirectionToMatchCardinal(((Button)view).getText().toString());
         }
     }
 
@@ -183,5 +187,13 @@ public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeL
         TextView condition_label = findViewById(R.id.textConditions);
         condition_label.setTextColor(getResources().getColor(android.R.color.holo_red_light));
         condition_label.setTypeface(null,Typeface.BOLD);
+    }
+
+    private void changeDirectionToMatchCardinal(String cardinal)
+    {
+        ((SeekBar)findViewById(R.id.seekWind))
+            .setProgress(Cardinal.getAbsoluteDirection(cardinal));
+        Log.d("ui-interaction", "Seek bar at " +
+            ((SeekBar)findViewById(R.id.seekWind)).getProgress());
     }
 }
