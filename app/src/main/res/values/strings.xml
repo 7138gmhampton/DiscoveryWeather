@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">DiscoveryWeather</string>
+    <string name="app_name">Discovery Weather</string>
     <string name="btn_post_text">Provide a Weather Recording</string>
     <string name="btn_submit">Submit</string>
     <string name="btn_confirm">Confirm</string>
@@ -9,18 +9,17 @@
     <string name="dialog_no">No</string>
 
     <string name="label_temp">Temperature</string>
-
     <string name="label_pressure">Pressure</string>
     <string name="label_pressure_unit">hPa</string>
     <string name="label_speed">Wind Speed</string>
-
     <string name="label_direction">Wind Direction</string>
     <string name="label_rain">Rainfall</string>
     <string name="label_snow">Snowfall</string>
-
     <string name="label_conditions">Overall Conditions</string>
+
     <string name="display_error">ERROR</string>
     <string name="display_wind_direction">%d\u00B0</string>
+
     <string name="placeholder_condition">-Select Condition-</string>
 
     <string name="unit_direction">\u00B0</string>

@@ -120,7 +120,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:labelFor="@id/editTemp"
-                            android:text="@string/label_temp_units"
+                            android:text="@string/unit_temp"
                             android:textSize="18sp" />
                     </LinearLayout>
 
@@ -199,7 +199,7 @@
                             android:id="@+id/textRainUnit"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/label_precipitation_unit"
+                            android:text="@string/unit_precipitation"
                             android:textSize="18sp" />
                     </LinearLayout>
 
@@ -233,7 +233,7 @@
                             android:id="@+id/textSnowUnit"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/label_precipitation_unit"
+                            android:text="@string/unit_precipitation"
                             android:textSize="18sp" />
                     </LinearLayout>
                 </LinearLayout>
@@ -277,7 +277,7 @@
                         android:id="@+id/textSpeedUnit"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/label_speed_unit"
+                        android:text="@string/unit_speed"
                         android:textSize="18sp" />
                 </LinearLayout>
 
