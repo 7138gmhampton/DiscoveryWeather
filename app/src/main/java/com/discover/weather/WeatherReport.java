@@ -7,7 +7,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
@@ -43,6 +45,7 @@ public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeL
             view.setOnClickListener(this);
         for (View view : findViewById(R.id.layoutCardinalsOff).getTouchables())
             view.setOnClickListener(this);
+        findViewById(R.id.checkIndeterminateWind).setOnClickListener(this);
         overall_condition_options = ConditionOptions.getInstance().getOptions();
 
         if (savedInstanceState != null) {
@@ -56,6 +59,7 @@ public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeL
         super.onResume();
         updateWindDirectionDisplay();
         updateSelectedConditionDisplay();
+        toggleDirectionControls();
     }
 
     @Override
@@ -92,6 +96,12 @@ public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeL
             case R.id.btnWest:
             case R.id.btnNorthWest:
                 changeDirectionToMatchCardinal(((Button)view).getText().toString());
+                break;
+            case R.id.checkIndeterminateWind:
+                toggleDirectionControls();
+                if (((CheckBox)view).isChecked())
+                    Log.d("ui-interaction", "Box checked");
+                else Log.d("ui-interaction", "Box unchecked");
         }
     }
 
@@ -206,5 +216,31 @@ public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeL
             .setProgress(Cardinal.getAbsoluteDirection(cardinal));
         Log.d("ui-interaction", "Seek bar at " +
             ((SeekBar)findViewById(R.id.seekWind)).getProgress());
+    }
+
+    private void toggleDirectionControls()
+    {
+//        for (View button : findViewById(R.id.layoutCardinalsMain).getTouchables())
+//            button.setEnabled(state);
+//        for (int iii = 0; iii < ((ViewGroup)findViewById(R.id.layoutCardinalsMain)).getChildCount(); ++iii)
+//            ((ViewGroup)findViewById(R.id.layoutCardinalsMain)).getChildAt(iii).setEnabled(state);
+        boolean state = !((CheckBox)findViewById(R.id.checkIndeterminateWind)).isChecked();
+
+        toggleSingleButtonSet((ViewGroup)findViewById(R.id.layoutCardinalsMain), state);
+        toggleSingleButtonSet((ViewGroup)findViewById(R.id.layoutCardinalsOff), state);
+//        Button indiv_button = findViewById(R.id.btnNorthEast);
+//        indiv_button.setEnabled(state);
+        if (state)
+            Log.d("ui-interaction", "State toggled to true");
+        else Log.d("ui-interaction", "State toggled to false");
+        ((View)findViewById(R.id.seekWind)).setEnabled(state);
+        ((View)findViewById(R.id.textDirectionDisplay)).setEnabled(state);
+        ((View)findViewById(R.id.textDirectionDisplayCardinal)).setEnabled(state);
+    }
+
+    private void toggleSingleButtonSet(ViewGroup set, boolean state)
+    {
+        for (int iii = 0; iii < set.getChildCount(); ++iii)
+            set.getChildAt(iii).setEnabled(state);
     }
 }
