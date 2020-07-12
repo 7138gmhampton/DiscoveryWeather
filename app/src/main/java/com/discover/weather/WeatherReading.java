@@ -9,7 +9,6 @@ import java.util.HashMap;
 
 import javax.annotation.Nullable;
 
-@SuppressWarnings("unused")
 public class WeatherReading implements Parcelable
 {
     private final Float temperature;
