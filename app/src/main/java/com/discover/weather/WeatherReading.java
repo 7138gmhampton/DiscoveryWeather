@@ -92,45 +92,17 @@ public class WeatherReading implements Parcelable
     {
         HashMap<String,Object> data = new HashMap<>();
 
-        if (temperature_in_celsius != null)
-            data.put("temperature", temperature_in_celsius);
-        if (pressure_in_hectopascals != null)
-            data.put("pressure", pressure_in_hectopascals);
-        if (wind_speed_in_metres_per_sec != null)
-            data.put("wind_speed", wind_speed_in_metres_per_sec);
-        if (rainfall_in_millimetres != null)
-            data.put("rainfall", rainfall_in_millimetres);
-        if (snowfall_in_millimetres != null)
-            data.put("snowfall", snowfall_in_millimetres);
-        if (wind_direction_in_degrees != null)
-            data.put("wind_direction", wind_direction_in_degrees);
+        if (temperature_in_celsius != null)  data.put("temperature", temperature_in_celsius);
+        if (pressure_in_hectopascals != null) data.put("pressure", pressure_in_hectopascals);
+        if (wind_speed_in_metres_per_sec != null) data.put("wind_speed", wind_speed_in_metres_per_sec);
+        if (rainfall_in_millimetres != null) data.put("rainfall", rainfall_in_millimetres);
+        if (snowfall_in_millimetres != null) data.put("snowfall", snowfall_in_millimetres);
+        if (wind_direction_in_degrees != null) data.put("wind_direction", wind_direction_in_degrees);
         data.put("condition", overall_condition);
         data.put("latitude", lat_long.latitude);
         data.put("longitude", lat_long.longitude);
         data.put("timestamp", System.currentTimeMillis()/1000);
 
         return data;
-    }
-
-    String authorSummary()
-    {
-        String summary = "";
-
-        summary += ConditionOptions.getInstance().getOptions().get(overall_condition) +
-            System.lineSeparator();
-        if (temperature_in_celsius != null)
-            summary += temperature_in_celsius + R.string.label_temp_units + System.lineSeparator();
-        if (pressure_in_hectopascals != null)
-            summary += pressure_in_hectopascals + R.string.label_pressure_unit + System.lineSeparator();
-        if (wind_speed_in_metres_per_sec != null)
-            summary += wind_speed_in_metres_per_sec + R.string.label_speed_unit + System.lineSeparator();
-        if (wind_direction_in_degrees != null)
-            summary += wind_direction_in_degrees + "\u00B0" + System.lineSeparator();
-        if (rainfall_in_millimetres != null)
-            summary += rainfall_in_millimetres + R.string.label_precipitation_unit + System.lineSeparator();
-        if (snowfall_in_millimetres != null)
-            summary += snowfall_in_millimetres + R.string.label_precipitation_unit + System.lineSeparator();
-
-        return summary;
     }
 }
