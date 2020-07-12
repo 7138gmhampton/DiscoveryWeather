@@ -166,7 +166,7 @@ public class ConfirmAndTag extends AppCompatActivity implements OnMapReadyCallba
     {
         final AlertDialog.Builder submit_dialog = new AlertDialog.Builder(this);
 
-        submit_dialog.setMessage(authorSummary())
+        submit_dialog.setMessage(Summary.author(this, reading))
             .setNegativeButton(R.string.dialog_no, new DialogInterface.OnClickListener()
             {
                 @Override
