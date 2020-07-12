@@ -114,13 +114,8 @@ public class ConfirmAndTag extends AppCompatActivity implements OnMapReadyCallba
     {
         this.map = map;
         this.map.setMinZoomPreference(12);
-//        this.map.moveCamera(CameraUpdateFactory.newLatLng(
-//                new LatLng(56.463266, -2.974478)));
         this.map.getUiSettings().setRotateGesturesEnabled(false);
-//        this.map.setMaxZoomPreference(30.0f);
         this.map.setMinZoomPreference(-10.0f);
-//        Log.d("googlemap", this.map.getMaxZoomLevel() + " Max & " +
-//            this.map.getMinZoomLevel() + " Min");
         this.map.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(56.463266, -2.974478), 10.0f));
         enableLocationService();
     }
@@ -131,12 +126,7 @@ public class ConfirmAndTag extends AppCompatActivity implements OnMapReadyCallba
     {
         switch (view.getId()) {
             case R.id.btnConfirm:
-//                submitReading();
-//                String summary_display = "Details to be submitted:" + System.lineSeparator() +
-//                    reading.authorSummary() + System.lineSeparator() + System.lineSeparator() +
-//                    "Are these details correct?";
                 AlertDialog.Builder submit_dialog = new AlertDialog.Builder(this);
-//                submit_dialog.setMessage("Details to be submitted")
                 submit_dialog.setMessage(authorSummary())
                     .setNegativeButton(R.string.dialog_no, new DialogInterface.OnClickListener()
                     {
@@ -151,14 +141,12 @@ public class ConfirmAndTag extends AppCompatActivity implements OnMapReadyCallba
                         @Override
                         public void onClick(DialogInterface dialog, int which)
                         {
-//                            dialog.dismiss();
                             submitReading();
                         }
                     });
                 submit_dialog.create().show();
                 break;
             case R.id.btnCancel:
-//                startActivity(new Intent(getApplicationContext(), Home.class));
                 final AlertDialog.Builder cancel_dialog =
                     new AlertDialog.Builder(this);
                 cancel_dialog.setMessage(getResources().getString(R.string.text_cancel))
@@ -175,13 +163,10 @@ public class ConfirmAndTag extends AppCompatActivity implements OnMapReadyCallba
                         @Override
                         public void onClick(DialogInterface dialog,int which)
                         {
-//                            dialog.dismiss();
                             startActivity(new Intent(getApplicationContext(), Home.class));
                         }
                     });
-//                AlertDialog confirmation_dialog = dialog_builder.create();
                 cancel_dialog.create().show();
-//                confirmation_dialog.show();
         }
     }
 
@@ -230,9 +215,6 @@ public class ConfirmAndTag extends AppCompatActivity implements OnMapReadyCallba
 
         summary += ConditionOptions.getInstance().getOptions().get(reading.getConditionCode()) +
             System.lineSeparator();
-//        if (reading.getTemperature() != null)
-//            summary += reading.getTemperature() + getResources().getString(R.string.label_temp_units) +
-//                System.lineSeparator();
         summary += appendDetail("Temperature: ", reading.getTemperature(), R.string.label_temp_units);
         summary += appendDetail("Pressure: ", reading.getPressure(), R.string.label_pressure_unit);
         summary += appendDetail("Wind Speed: ", reading.getWindSpeed(), R.string.label_speed_unit);
