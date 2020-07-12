@@ -35,7 +35,8 @@
         app:layout_constraintStart_toStartOf="@+id/mapView"
         app:layout_constraintTop_toTopOf="@+id/mapView"
         app:srcCompat="@drawable/crosshair"
-        tools:srcCompat="@drawable/crosshair" />
+        tools:srcCompat="@drawable/crosshair"
+        tools:ignore="ContentDescription" />
 
     <TextView
         android:id="@+id/textMapInx"
