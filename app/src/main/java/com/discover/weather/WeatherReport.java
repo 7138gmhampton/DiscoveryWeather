@@ -34,22 +34,14 @@ public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeL
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_weather_report);
+
         default_colour = ((TextView)findViewById(R.id.textConditions)).getTextColors();
-
-        ((SeekBar)findViewById(R.id.seekWind)).setOnSeekBarChangeListener(this);
-        findViewById(R.id.textConditionSelected).setOnClickListener(this);
-        findViewById(R.id.btnConfirm).setOnClickListener(this);
-        for (View view : findViewById(R.id.layoutCardinalsMain).getTouchables())
-            view.setOnClickListener(this);
-        for (View view : findViewById(R.id.layoutCardinalsOff).getTouchables())
-            view.setOnClickListener(this);
-        findViewById(R.id.checkIndeterminateWind).setOnClickListener(this);
-        findViewById(R.id.btnWindMoreInfo).setOnClickListener(this);
         overall_condition_options = ConditionOptions.getInstance().getOptions();
-
-        if (savedInstanceState != null) {
+        if (savedInstanceState != null)
             selected_condition = savedInstanceState.getInt("condition", -1);
-        } else selected_condition = -1;
+        else selected_condition = -1;
+
+        attachListenersToActivity();
     }
 
     @Override
@@ -108,6 +100,19 @@ public class WeatherReport extends AppCompatActivity implements OnSeekBarChangeL
         selected_condition = index;
 
         updateSelectedConditionDisplay();
+    }
+
+    private void attachListenersToActivity()
+    {
+        ((SeekBar)findViewById(R.id.seekWind)).setOnSeekBarChangeListener(this);
+        findViewById(R.id.textConditionSelected).setOnClickListener(this);
+        findViewById(R.id.btnConfirm).setOnClickListener(this);
+        for (View view : findViewById(R.id.layoutCardinalsMain).getTouchables())
+            view.setOnClickListener(this);
+        for (View view : findViewById(R.id.layoutCardinalsOff).getTouchables())
+            view.setOnClickListener(this);
+        findViewById(R.id.checkIndeterminateWind).setOnClickListener(this);
+        findViewById(R.id.btnWindMoreInfo).setOnClickListener(this);
     }
 
     private void updateWindDirectionDisplay()
