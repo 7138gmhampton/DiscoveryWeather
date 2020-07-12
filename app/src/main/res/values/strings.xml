@@ -46,7 +46,7 @@
     </string>
     <string name="text_cancel">
         Cancel weather reading submission?
-        Please note the data previous entered will be unretrievable.
+        Please note the data previous entered will not be retrievable.
     </string>
 
     <string name="btn_north">N</string>
