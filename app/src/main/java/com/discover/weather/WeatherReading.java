@@ -111,4 +111,26 @@ public class WeatherReading implements Parcelable
 
         return data;
     }
+
+    String authorSummary()
+    {
+        String summary = "";
+
+        summary += ConditionOptions.getInstance().getOptions().get(overall_condition) +
+            System.lineSeparator();
+        if (temperature_in_celsius != null)
+            summary += temperature_in_celsius + R.string.label_temp_units + System.lineSeparator();
+        if (pressure_in_hectopascals != null)
+            summary += pressure_in_hectopascals + R.string.label_pressure_unit + System.lineSeparator();
+        if (wind_speed_in_metres_per_sec != null)
+            summary += wind_speed_in_metres_per_sec + R.string.label_speed_unit + System.lineSeparator();
+        if (wind_direction_in_degrees != null)
+            summary += wind_direction_in_degrees + "\u00B0" + System.lineSeparator();
+        if (rainfall_in_millimetres != null)
+            summary += rainfall_in_millimetres + R.string.label_precipitation_unit + System.lineSeparator();
+        if (snowfall_in_millimetres != null)
+            summary += snowfall_in_millimetres + R.string.label_precipitation_unit + System.lineSeparator();
+
+        return summary;
+    }
 }
